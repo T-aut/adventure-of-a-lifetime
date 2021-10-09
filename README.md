@@ -1,5 +1,6 @@
 # Adventure of a Lifetime
 A unity 2d top-down game project
+
 **Unity version**: 2020.3.18f1 LTS
 
 ## Folder structure
