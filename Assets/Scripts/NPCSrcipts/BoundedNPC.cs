@@ -40,6 +40,7 @@ public class BoundedNPC : MonoBehaviour
             ChangeDirection();
         }
     }
+    //TODO: method that calculates delta distance and change direction based on that.
     void UpdateAnimation()
     {
         myAnimator.SetFloat("MoveX", directionVector.x);
