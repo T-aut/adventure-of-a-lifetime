@@ -1,55 +1,61 @@
 fileFormatVersion: 2
-guid: f69b6626098a3594aad4e94f114421cc
+guid: 86cd49a91e80aa847a5b734ea6d409a1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2757298984738394219
-    second: NPC_test_0
+      213: 6504090109950332714
+    second: wolfsheet1_0
   - first:
-      213: -3297999012176952179
-    second: NPC_test_1
+      213: -8554926187522005066
+    second: wolfsheet1_1
   - first:
-      213: 109808345321430783
-    second: NPC_test_2
+      213: -6958861156679937414
+    second: wolfsheet1_2
   - first:
-      213: -984706229473049029
-    second: NPC_test_3
+      213: -5001081346104882815
+    second: wolfsheet1_3
   - first:
-      213: 4411923371137299535
-    second: NPC_test_4
+      213: -1593187259669133572
+    second: wolfsheet1_4
   - first:
-      213: -7544729849536096197
-    second: NPC_test_5
+      213: -6926429107137749909
+    second: wolfsheet1_5
   - first:
-      213: 3471414262902695032
-    second: NPC_test_6
+      213: 8021918276550481157
+    second: wolfsheet1_6
   - first:
-      213: -5174125284999604879
-    second: NPC_test_7
+      213: 7404320280896791928
+    second: wolfsheet1_7
   - first:
-      213: -6431366237039918707
-    second: NPC_test_8
+      213: -2430393023287588171
+    second: wolfsheet1_8
   - first:
-      213: -8922353081226294202
-    second: NPC_test_9
+      213: -5092845092555646918
+    second: wolfsheet1_9
   - first:
-      213: 6796940128468367395
-    second: NPC_test_10
+      213: -1732505189353496963
+    second: wolfsheet1_10
   - first:
-      213: -1790513009360131488
-    second: NPC_test_11
+      213: -208909696368203006
+    second: wolfsheet1_11
   - first:
-      213: -8018767669905319889
-    second: NPC_test_12
+      213: 6640856516662170040
+    second: wolfsheet1_12
   - first:
-      213: 7257679221847934946
-    second: NPC_test_13
+      213: -7005624278902499926
+    second: wolfsheet1_13
   - first:
-      213: -1466947835845212873
-    second: NPC_test_14
+      213: -4408769769723882930
+    second: wolfsheet1_14
   - first:
-      213: 8869442856293547957
-    second: NPC_test_15
+      213: 5036163949723037448
+    second: wolfsheet1_15
+  - first:
+      213: -2645662253144107830
+    second: wolfsheet1_16
+  - first:
+      213: 5727575950173681214
+    second: wolfsheet1_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,7 +100,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,337 +145,379 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NPC_test_0
+      name: wolfsheet1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 16
-        height: 32
+        y: 192
+        width: 33
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59f6f13ae2b1cb9d0800000000000000
-      internalID: -2757298984738394219
+      spriteID: a2f88beae7b234a50800000000000000
+      internalID: 6504090109950332714
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_test_1
+      name: wolfsheet1_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 96
-        width: 16
-        height: 32
+        x: 35
+        y: 191
+        width: 28
+        height: 65
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d848a993f572b32d0800000000000000
-      internalID: -3297999012176952179
+      spriteID: 6b7601955fbc64980800000000000000
+      internalID: -8554926187522005066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_test_2
+      name: wolfsheet1_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
-        width: 16
-        height: 32
+        x: 66
+        y: 192
+        width: 32
+        height: 66
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffed148bb1e168100800000000000000
-      internalID: 109808345321430783
+      spriteID: a7214dac5a82d6f90800000000000000
+      internalID: -6958861156679937414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_test_3
+      name: wolfsheet1_3
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
-        width: 16
-        height: 32
+        x: 98
+        y: 195
+        width: 34
+        height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b360528c6ee9552f0800000000000000
-      internalID: -984706229473049029
+      spriteID: 18906983307989ab0800000000000000
+      internalID: -5001081346104882815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_test_4
+      name: wolfsheet1_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 163
+        y: 192
+        width: 27
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf64ebed0acd3e9e0800000000000000
+      internalID: -1593187259669133572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_5
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 192
+        width: 27
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6cd023cc6160ef90800000000000000
+      internalID: -6926429107137749909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_6
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 192
+        width: 28
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 505510bab24935f60800000000000000
+      internalID: 8021918276550481157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_7
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 192
+        width: 25
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 875e212d01e61c660800000000000000
+      internalID: 7404320280896791928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_8
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 254
+        width: 64
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ba0b5e0c62854ed0800000000000000
+      internalID: -2430393023287588171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_9
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 255
+        width: 65
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3811221f549259b0800000000000000
+      internalID: -5092845092555646918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_10
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 256
+        width: 66
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e5011a5b7e4f7e0800000000000000
+      internalID: -1732505189353496963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 64
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ba6ddecbdc91df0800000000000000
+      internalID: -208909696368203006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_12
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 255
+        width: 63
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b19cff21df092c50800000000000000
+      internalID: 6640856516662170040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_13
+      rect:
+        serializedVersion: 2
+        x: 318
         y: 64
-        width: 16
-        height: 32
+        width: 65
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f44f1e04eec4a3d30800000000000000
-      internalID: 4411923371137299535
+      spriteID: aa51a22f5d507ce90800000000000000
+      internalID: -7005624278902499926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_test_5
+      name: wolfsheet1_14
       rect:
         serializedVersion: 2
-        x: 16
+        x: 385
+        y: 62
+        width: 63
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e42902bc047e0d2c0800000000000000
+      internalID: -4408769769723882930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsheet1_15
+      rect:
+        serializedVersion: 2
+        x: 449
         y: 64
-        width: 16
-        height: 32
+        width: 63
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b385d10fc2cbb4790800000000000000
-      internalID: -7544729849536096197
+      spriteID: 80faed5fd6c04e540800000000000000
+      internalID: 5036163949723037448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_test_6
+      name: wolfsheet1_16
       rect:
         serializedVersion: 2
-        x: 32
+        x: 512
         y: 64
-        width: 16
-        height: 32
+        width: 64
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8742a8831e0fc2030800000000000000
-      internalID: 3471414262902695032
+      spriteID: ac49fa5b238b84bd0800000000000000
+      internalID: -2645662253144107830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NPC_test_7
+      name: wolfsheet1_17
       rect:
         serializedVersion: 2
-        x: 48
-        y: 64
-        width: 16
-        height: 32
+        x: 576
+        y: 62
+        width: 63
+        height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1755b3c8770d138b0800000000000000
-      internalID: -5174125284999604879
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_test_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d818bc47b723fb6a0800000000000000
-      internalID: -6431366237039918707
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_test_9
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64c05e0352f6d2480800000000000000
-      internalID: -8922353081226294202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_test_10
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32874fcf805935e50800000000000000
-      internalID: 6796940128468367395
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_test_11
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 06aaf5f87e1d627e0800000000000000
-      internalID: -1790513009360131488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_test_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2818ea1a4d97b090800000000000000
-      internalID: -8018767669905319889
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_test_13
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e7caf7acc478b460800000000000000
-      internalID: 7257679221847934946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_test_14
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7350b6c27ba54abe0800000000000000
-      internalID: -1466947835845212873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC_test_15
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bfb0051947961b70800000000000000
-      internalID: 8869442856293547957
+      spriteID: e363c2e0bff6c7f40800000000000000
+      internalID: 5727575950173681214
       vertices: []
       indices: 
       edges: []

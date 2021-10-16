@@ -31,7 +31,6 @@ public class BoundedNPC : MonoBehaviour
         Vector3 temp = myTransform.position + directionVector * speed * Time.deltaTime;
         if (bounds.bounds.Contains(temp))
         {
-            Debug.Log(temp.x);
             myRigidBody.MovePosition(temp);
         }
         else
@@ -41,7 +40,7 @@ public class BoundedNPC : MonoBehaviour
         }
     }
     //TODO: method that calculates delta distance and change direction based on that.
-    void UpdateAnimation()
+    public void UpdateAnimation()
     {
         myAnimator.SetFloat("MoveX", directionVector.x);
         myAnimator.SetFloat("MoveY", directionVector.y);
