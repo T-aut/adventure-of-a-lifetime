@@ -25,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsMoving", _movement.sqrMagnitude > 0);
         animator.SetFloat("Vertical", _movement.y);
         animator.SetFloat("Horizontal", _movement.x);
+
+        if (_movement.y > 0) animator.SetFloat("FacingDirection", 0);
+        else if (_movement.y < 0) animator.SetFloat("FacingDirection", 2);
+
+        if (_movement.x > 0) animator.SetFloat("FacingDirection", 1);
+        else if (_movement.x < 0) animator.SetFloat("FacingDirection", 3);
     }
 
     void FixedUpdate() 
