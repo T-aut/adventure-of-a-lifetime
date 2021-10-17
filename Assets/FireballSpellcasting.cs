@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FireballSpellcasting : MonoBehaviour
 {
-    public Rigidbody2D rb;
     public Animator animator;
 
     // Start is called before the first frame update
