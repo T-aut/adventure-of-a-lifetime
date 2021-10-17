@@ -166,10 +166,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 194
-        width: 30
-        height: 46
+        x: 0
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +187,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_1
       rect:
         serializedVersion: 2
-        x: 83
-        y: 193
-        width: 26
-        height: 46
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,10 +208,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_2
       rect:
         serializedVersion: 2
-        x: 148
-        y: 193
-        width: 25
-        height: 46
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,10 +229,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_3
       rect:
         serializedVersion: 2
-        x: 211
-        y: 193
-        width: 27
-        height: 47
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +250,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_4
       rect:
         serializedVersion: 2
-        x: 274
-        y: 193
-        width: 36
-        height: 47
+        x: 256
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,10 +271,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_5
       rect:
         serializedVersion: 2
-        x: 338
-        y: 193
-        width: 39
-        height: 47
+        x: 320
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,10 +292,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_6
       rect:
         serializedVersion: 2
-        x: 12
-        y: 130
-        width: 32
-        height: 47
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,10 +313,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_7
       rect:
         serializedVersion: 2
-        x: 75
-        y: 130
-        width: 31
-        height: 45
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,10 +334,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_8
       rect:
         serializedVersion: 2
-        x: 147
-        y: 130
-        width: 25
-        height: 47
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,10 +355,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_9
       rect:
         serializedVersion: 2
-        x: 199
-        y: 130
-        width: 38
-        height: 47
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -377,9 +377,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 130
-        width: 44
-        height: 47
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,10 +397,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_11
       rect:
         serializedVersion: 2
-        x: 321
-        y: 130
-        width: 43
-        height: 47
+        x: 320
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,10 +418,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_12
       rect:
         serializedVersion: 2
-        x: 17
-        y: 66
-        width: 30
-        height: 47
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,10 +439,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_13
       rect:
         serializedVersion: 2
-        x: 83
-        y: 66
-        width: 26
-        height: 47
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,10 +460,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_14
       rect:
         serializedVersion: 2
-        x: 147
-        y: 66
-        width: 26
-        height: 45
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,10 +481,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_15
       rect:
         serializedVersion: 2
-        x: 212
-        y: 66
-        width: 26
-        height: 46
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,10 +502,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_16
       rect:
         serializedVersion: 2
-        x: 276
-        y: 66
-        width: 35
-        height: 47
+        x: 256
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,10 +523,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_17
       rect:
         serializedVersion: 2
-        x: 339
-        y: 66
-        width: 44
-        height: 47
+        x: 320
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -544,10 +544,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_18
       rect:
         serializedVersion: 2
-        x: 20
-        y: 2
-        width: 32
-        height: 47
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -565,10 +565,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_19
       rect:
         serializedVersion: 2
-        x: 86
-        y: 2
-        width: 31
-        height: 45
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -586,10 +586,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_20
       rect:
         serializedVersion: 2
-        x: 148
-        y: 2
-        width: 25
-        height: 47
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -607,10 +607,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_21
       rect:
         serializedVersion: 2
-        x: 211
-        y: 2
-        width: 38
-        height: 47
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -628,10 +628,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_22
       rect:
         serializedVersion: 2
-        x: 276
-        y: 2
-        width: 44
-        height: 47
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -649,10 +649,10 @@ TextureImporter:
       name: Player_Dagger_Sprites_23
       rect:
         serializedVersion: 2
-        x: 340
-        y: 2
-        width: 43
-        height: 47
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -14897,7 +14897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104651028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -42.906918, y: 14.59144, z: -10}
+  m_LocalPosition: {x: -42.74486, y: 14.591135, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17773,7 +17773,7 @@ PrefabInstance:
     - target: {fileID: 5628018141983903104, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
@@ -17783,12 +17783,12 @@ PrefabInstance:
     - target: {fileID: 5628018141983903106, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.1041489
+      value: -46.26
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08966452
+      value: 13.3
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
@@ -110923,6 +110923,7 @@ GameObject:
   - component: {fileID: 1784000826}
   - component: {fileID: 1784000825}
   - component: {fileID: 1784000824}
+  - component: {fileID: 1784000829}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -110976,8 +110977,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00010418892, y: -0.2566908}
-  m_Size: {x: 0.7574382, y: 1.4348949}
+  m_Offset: {x: 0.00010418892, y: -0.7625127}
+  m_Size: {x: 0.7574382, y: 1.3930902}
   m_Direction: 0
 --- !u!114 &1784000826
 MonoBehaviour:
@@ -111060,12 +111061,27 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.71875, y: 1.46875}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1784000829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784000822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71284e9727b26bf41b43e42dee79fc95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1784000827}
+  animator: {fileID: 1784000824}
+  attackAnimationDuration: 0.5
 --- !u!1001 &1804403634
 PrefabInstance:
   m_ObjectHideFlags: 0
