@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb;
     public Animator animator;
+    public PlayerMovement movement;
     public float attackAnimationDuration = 0f;
 
     void Update()
@@ -17,7 +17,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator WaitForAttackAnimation() {
         animator.SetBool("IsAttacking", true);
+        movement.SetControlEnabled(false);
+
         yield return new WaitForSeconds(attackAnimationDuration);
+
         animator.SetBool("IsAttacking", false);
+        movement.SetControlEnabled(true);
     }
 }

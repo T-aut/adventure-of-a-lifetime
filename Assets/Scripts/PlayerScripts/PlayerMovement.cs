@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
+    private bool _isControlEnabled = true;
 
     private Vector2 _movement = new Vector2();
 
@@ -19,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _movement.y = Input.GetAxisRaw("Vertical");
-        _movement.x = Input.GetAxisRaw("Horizontal");
+        _movement.y = _isControlEnabled ? Input.GetAxisRaw("Vertical") : 0;
+        _movement.x = _isControlEnabled ? Input.GetAxisRaw("Horizontal") : 0;
 
         animator.SetBool("IsMoving", _movement.sqrMagnitude > 0);
         animator.SetFloat("Vertical", _movement.y);
@@ -35,6 +36,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate() 
     {
+        if (!_isControlEnabled) return;
+
         rb.MovePosition(rb.position + _movement * speed * Time.fixedDeltaTime);
+    }
+
+    public void SetControlEnabled(bool enabled) {
+        _isControlEnabled = enabled;
     }
 }
