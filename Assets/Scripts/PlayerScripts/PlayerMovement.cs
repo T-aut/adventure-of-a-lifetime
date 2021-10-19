@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     private bool _isControlEnabled = true;
-
     private Vector2 _movement = new Vector2();
 
     // Start is called before the first frame update
@@ -43,5 +42,34 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetControlEnabled(bool enabled) {
         _isControlEnabled = enabled;
+    }
+
+    // Returns the velocity vector of the current direction the player is facing
+    // Necessary when casting a fireball when standing still
+    public Vector2 GetDirectionVelocity()
+    {
+        Vector2 directionVelocity = new Vector2();
+        float currentDirection = animator.GetFloat("FacingDirection");
+        // Character is facing upwards
+        if (currentDirection == 0)
+        {
+            directionVelocity = new Vector2(0, 1);
+        }
+        // Character is facing to the right
+        else if (currentDirection == 1)
+        {
+            directionVelocity = new Vector2(1, 0);
+        }
+        // Character is facing downwards
+        else if (currentDirection == 2)
+        {
+            directionVelocity = new Vector2(0, -1);
+        }
+                // Character is facing to the left
+        else if (currentDirection == 3)
+        {
+            directionVelocity = new Vector2(-1, 0);
+        }
+        return directionVelocity;
     }
 }

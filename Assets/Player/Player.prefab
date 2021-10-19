@@ -174,3 +174,6 @@ MonoBehaviour:
   animator: {fileID: 484633429583499378}
   movement: {fileID: 484633429583499376}
   attackAnimationDuration: 0.5
+  fireballProjectile: {fileID: 1272379795389326707, guid: 6ff0ceea267c7744780d56b1de05ff51,
+    type: 3}
+  fireballCastDelay: 0.3

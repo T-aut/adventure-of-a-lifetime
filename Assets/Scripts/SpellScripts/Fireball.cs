@@ -14,7 +14,7 @@ public class Fireball : MonoBehaviour
     }
 
     // Position the fireball in the appropriate direction and calculate its velocity
-    void Setup(Vector2 velocity, Vector3 direction)
+    public void Setup(Vector2 velocity, Vector3 direction)
     {
         rb.velocity = velocity.normalized * fireballSpeed;
 
