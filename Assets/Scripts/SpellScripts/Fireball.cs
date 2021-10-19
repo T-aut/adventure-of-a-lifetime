@@ -22,4 +22,14 @@ public class Fireball : MonoBehaviour
         transform.rotation = Quaternion.Euler(direction);
     }
 
+    // This method is called when the fireball collides with another object that has a collider
+    public void OnTriggerEnter2D(Collider2D otherObject)
+    {
+        // Destroy the fireball object if it collides with anything except the player or the grid
+        if (!otherObject.gameObject.CompareTag("Player") && !otherObject.gameObject.CompareTag("Grid"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }
