@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         movement.SetControlEnabled(true);
     }
 
-    // Creates a fireball at the appropriate location near the player
+    // Creates a fireball at the appropriate location near the player with a computed velocity and angle
     private void CreateFireball()
     {
         Vector2 fireballVelocity = new Vector2();
@@ -58,6 +58,14 @@ public class PlayerController : MonoBehaviour
             fireballVelocity = movement.GetDirectionVelocity();
         }
         Fireball fireball = Instantiate(fireballProjectile, transform.position, Quaternion.identity).GetComponent<Fireball>();
-        fireball.Setup(fireballVelocity, Vector3.zero);
+        fireball.Setup(fireballVelocity, ComputeFireballAngle());
+    }
+
+    // Calculates at what angle should the fireball sprite fly
+    private Vector3 ComputeFireballAngle()
+    {
+        // Calculate the rotation degrees
+        float degrees = Mathf.Atan2(animator.GetFloat("Vertical"), animator.GetFloat("Horizontal")) * Mathf.Rad2Deg;
+        return new Vector3(0, 0, degrees);
     }
 }
