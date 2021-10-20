@@ -8,16 +8,16 @@ public class PlayerController : MonoBehaviour
     public PlayerMovement movement;
     public float attackAnimationDuration = 0f;
     public GameObject fireballProjectile;
-    public float fireballCastDelay = 0f;
+    public float fireballCastAnimationDuration = 0f;
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking")) {
+        if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting")) {
             StartCoroutine(WaitForAttackAnimation());
         }
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
-            StartCoroutine(WaitForFireballDelay());
+            StartCoroutine(WaitForFireballAnimation());
         }
     }
 
@@ -33,13 +33,15 @@ public class PlayerController : MonoBehaviour
     }
 
     // Wait a delay after casting a fireball before moving
-    private IEnumerator WaitForFireballDelay()
+    private IEnumerator WaitForFireballAnimation()
     {
+        animator.SetBool("IsCasting", true);
         movement.SetControlEnabled(false);
+
+        yield return new WaitForSeconds(fireballCastAnimationDuration);
+
         CreateFireball();
-
-        yield return new WaitForSeconds(fireballCastDelay);
-
+        animator.SetBool("IsCasting", false);
         movement.SetControlEnabled(true);
     }
 
