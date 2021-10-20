@@ -40,18 +40,19 @@ public class Fireball : MonoBehaviour
         // Destroy the fireball object if it collides with anything except the player or the grid
         if (!otherObject.gameObject.CompareTag("Player") && !otherObject.gameObject.CompareTag("Grid"))
         {
-            StartCoroutine(WaitForExplosionAnimation());
-            Destroy(this.gameObject);
+            StartCoroutine(WaitForExplosionAnimationDestroyFireball());
         }
     }
 
-    private IEnumerator WaitForExplosionAnimation()
+    private IEnumerator WaitForExplosionAnimationDestroyFireball()
     {
         animator.SetBool("IsFlying", false);
         // Stop the fireball but keep its rotation the same as previously
         Setup(new Vector2(0, 0), currentDirection);
 
         yield return new WaitForSeconds(fireballExplosionAnimationDuration);
+
+        Destroy(this.gameObject);
     }
 
 }
