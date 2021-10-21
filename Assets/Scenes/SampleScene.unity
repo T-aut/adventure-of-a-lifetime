@@ -3507,6 +3507,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: 0/0 Health
       objectReference: {fileID: 0}
+    - target: {fileID: 5510382441600354415, guid: f7162b84863baba4bafb2589864e6802,
+        type: 3}
+      propertyPath: m_TagString
+      value: ManaSprite
+      objectReference: {fileID: 0}
     - target: {fileID: 5510382441765092198, guid: f7162b84863baba4bafb2589864e6802,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3616,6 +3621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TinyHealthSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510382441765092199, guid: f7162b84863baba4bafb2589864e6802,
+        type: 3}
+      propertyPath: m_TagString
+      value: HealthSprite
       objectReference: {fileID: 0}
     - target: {fileID: 5510382442386349946, guid: f7162b84863baba4bafb2589864e6802,
         type: 3}
@@ -116971,6 +116981,8 @@ MonoBehaviour:
   animator: {fileID: 2077181569}
   movement: {fileID: 2077181571}
   attackAnimationDuration: 0.5
+  health: {fileID: 0}
+  mana: {fileID: 0}
 --- !u!95 &2077181569
 Animator:
   serializedVersion: 3

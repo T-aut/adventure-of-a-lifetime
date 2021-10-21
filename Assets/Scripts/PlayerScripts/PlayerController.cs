@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public PlayerMovement movement;
     public float attackAnimationDuration = 0f;
+    public HealthSystem health = GameObject.FindGameObjectsWithTag("HealthSprite")[0].GetComponent<HealthSystem>();
+    public HealthSystem mana = GameObject.FindGameObjectsWithTag("ManaSprite")[0].GetComponent<HealthSystem>();
+
 
     void Update()
     {
