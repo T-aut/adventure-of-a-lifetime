@@ -3,14 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Map Border
+  - Spell
+  - Camera
+  - Grid
+  - Prop
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Borders
+  - Spells
+  - Props
+  - Grid
   - 
   - 
   - 
@@ -24,10 +33,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
   - 
   - 
   - 
@@ -49,4 +54,7 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+    locked: 0
+  - name: Layer 11
+    uniqueID: 3609765207
     locked: 0
