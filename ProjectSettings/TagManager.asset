@@ -9,6 +9,7 @@ TagManager:
   - Camera
   - Grid
   - Prop
+  - UI
   layers:
   - Default
   - TransparentFX

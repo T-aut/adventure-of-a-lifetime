@@ -33,14 +33,15 @@ public class PlayerMovement : MonoBehaviour
         else if (_movement.x < 0) animator.SetFloat("FacingDirection", 3);
     }
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         if (!_isControlEnabled) return;
 
         rb.MovePosition(rb.position + _movement * speed * Time.fixedDeltaTime);
     }
 
-    public void SetControlEnabled(bool enabled) {
+    public void SetControlEnabled(bool enabled)
+    {
         _isControlEnabled = enabled;
     }
 
@@ -75,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 directionVelocity = new Vector2(0, -1);
             }
-                    // Character is facing to the left
+            // Character is facing to the left
             else if (currentDirection == 3)
             {
                 directionVelocity = new Vector2(-1, 0);
@@ -84,4 +85,6 @@ public class PlayerMovement : MonoBehaviour
 
         return directionVelocity;
     }
+
+    public bool IsControlEnabled() => _isControlEnabled;
 }
