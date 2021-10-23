@@ -28,6 +28,12 @@ public class HealthSystem : MonoBehaviour
 	public float manaPoint = 100f;
 	public float maxManaPoint = 100f;
 
+	public Image currentStaminaBar;
+	public Image currentStaminaGlobe;
+	public Text staminaText;
+	public float staminaPoint = 100f;
+	public float maxStaminaPoint = 100f;
+
 	//==============================================================
 	// Regenerate Health & Mana
 	//==============================================================
@@ -35,7 +41,6 @@ public class HealthSystem : MonoBehaviour
 	public float regen = 0.1f;
 	private float timeleft = 0.0f;	// Left time for current interval
 	public float regenUpdateInterval = 1f;
-
 	public bool GodMode;
 
 	//==============================================================
@@ -78,11 +83,13 @@ public class HealthSystem : MonoBehaviour
 			{
 				HealDamage(maxHitPoint);
 				RestoreMana(maxManaPoint);
+				RestoreStamina(maxStaminaPoint);
 			}
 			else
 			{
 				HealDamage(regen);
-				RestoreMana(regen);				
+				RestoreMana(regen);	
+				RestoreStamina(regen);			
 			}
 
 			UpdateGraphics();
@@ -98,14 +105,14 @@ public class HealthSystem : MonoBehaviour
 	{
 		float ratio = hitPoint / maxHitPoint;
 		currentHealthBar.rectTransform.localPosition = new Vector3(currentHealthBar.rectTransform.rect.width * ratio - currentHealthBar.rectTransform.rect.width, 0, 0);
-		healthText.text = hitPoint.ToString ("0") + "/" + maxHitPoint.ToString ("0");
+		healthText.text = hitPoint.ToString ("0") + "/" + maxHitPoint.ToString ("0") + " Health";
 	}
 
 	private void UpdateHealthGlobe()
 	{
 		float ratio = hitPoint / maxHitPoint;
 		currentHealthGlobe.rectTransform.localPosition = new Vector3(0, currentHealthGlobe.rectTransform.rect.height * ratio - currentHealthGlobe.rectTransform.rect.height, 0);
-		healthText.text = hitPoint.ToString("0") + "/" + maxHitPoint.ToString("0");
+		healthText.text = hitPoint.ToString("0") + "/" + maxHitPoint.ToString("0") + " Health";
 	}
 
 	public void TakeDamage(float Damage)
@@ -141,14 +148,14 @@ public class HealthSystem : MonoBehaviour
 	{
 		float ratio = manaPoint / maxManaPoint;
 		currentManaBar.rectTransform.localPosition = new Vector3(currentManaBar.rectTransform.rect.width * ratio - currentManaBar.rectTransform.rect.width, 0, 0);
-		manaText.text = manaPoint.ToString ("0") + "/" + maxManaPoint.ToString ("0");
+		manaText.text = manaPoint.ToString ("0") + "/" + maxManaPoint.ToString ("0") + " Mana";
 	}
 
 	private void UpdateManaGlobe()
 	{
 		float ratio = manaPoint / maxManaPoint;
 		currentManaGlobe.rectTransform.localPosition = new Vector3(0, currentManaGlobe.rectTransform.rect.height * ratio - currentManaGlobe.rectTransform.rect.height, 0);
-		manaText.text = manaPoint.ToString("0") + "/" + maxManaPoint.ToString("0");
+		manaText.text = manaPoint.ToString("0") + "/" + maxManaPoint.ToString("0") + " Mana";
 	}
 
 	public void UseMana(float Mana)
@@ -176,6 +183,48 @@ public class HealthSystem : MonoBehaviour
 	}
 
 	//==============================================================
+	// Stamina Logic
+	//==============================================================
+	private void UpdateStaminaBar()
+	{
+		float ratio = staminaPoint / maxStaminaPoint;
+		currentStaminaBar.rectTransform.localPosition = new Vector3(currentStaminaBar.rectTransform.rect.width * ratio - currentStaminaBar.rectTransform.rect.width, 0, 0);
+		staminaText.text = staminaPoint.ToString ("0") + "/" + maxStaminaPoint.ToString ("0") + " Stamina";
+	}
+
+	private void UpdateStaminaGlobe()
+	{
+		float ratio = staminaPoint / maxStaminaPoint;
+		currentStaminaGlobe.rectTransform.localPosition = new Vector3(0, currentStaminaGlobe.rectTransform.rect.height * ratio - currentStaminaGlobe.rectTransform.rect.height, 0);
+		staminaText.text = staminaPoint.ToString("0") + "/" + maxStaminaPoint.ToString("0") + " Stamina";
+	}
+
+	public void UseStamina(float Stamina)
+	{
+		staminaPoint -= Stamina;
+		if (staminaPoint < 1) // Mana is Zero!!
+			staminaPoint = 0;
+
+		UpdateGraphics();
+	}
+
+	public void RestoreStamina(float Stamina)
+	{
+		staminaPoint += Stamina;
+		if (staminaPoint > maxStaminaPoint) 
+			staminaPoint = maxStaminaPoint;
+
+		UpdateGraphics();
+	}
+
+	public void SetMaxStamina(float max)
+	{
+		maxStaminaPoint += (int)(maxStaminaPoint * max / 100);
+		
+		UpdateGraphics();
+	}
+
+	//==============================================================
 	// Update all Bars & Globes UI graphics
 	//==============================================================
 	private void UpdateGraphics()
@@ -184,6 +233,8 @@ public class HealthSystem : MonoBehaviour
 		UpdateHealthGlobe();
 		UpdateManaBar();
 		UpdateManaGlobe();
+		UpdateStaminaBar();
+		UpdateStaminaGlobe();
 	}
 
 	//==============================================================
@@ -193,11 +244,9 @@ public class HealthSystem : MonoBehaviour
 	{
 		// Player gets hurt. Do stuff.. play anim, sound..
 
-		PopupText.Instance.Popup("Ouch!", 1f, 1f); // Demo stuff!
-
 		if (hitPoint < 1) // Health is Zero!!
 		{
-			yield return StartCoroutine(PlayerDied()); // Hero is Dead
+			Destroy(this);
 		}
 
 		else
