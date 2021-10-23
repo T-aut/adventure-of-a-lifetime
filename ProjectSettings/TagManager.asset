@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Map Border
+  - HealthSystem
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: Layer 11
     uniqueID: 3609765207
+    locked: 0
+  - name: UI
+    uniqueID: 1090221765
     locked: 0

@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking")) {
             StartCoroutine(WaitForAttackAnimation());
-        }
-        else if (Input.GetKeyDown("q")) {
+        } else if (Input.GetKeyDown("q")) {
             healthSystem.TakeDamage(10);
             healthSystem.UseMana(10);
             healthSystem.UseStamina(10);
