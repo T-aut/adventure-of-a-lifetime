@@ -4,25 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Map Border
-  - HealthSystem
-  - Props
-  - Spell
   - Camera
+  - Map Border
   - Grid
+  - Spell
   - Prop
+  - UI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
   - Props
-  - Player
   - Water
   - UI
-  - Borders
-  - Spells
-  - Props
-  - Grid
+  - Player
+  - Camera
+  - 
+  - 
   - 
   - 
   - 
@@ -50,17 +48,8 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Props
-    uniqueID: 2425651459
-    locked: 0
-  - name: Layer 2
-    uniqueID: 4250941897
-    locked: 0
-  - name: Layer 3
-    uniqueID: 4189426099
-    locked: 0
-  - name: Layer 11
-    uniqueID: 3609765207
+    uniqueID: 2391055107
     locked: 0
   - name: UI
-    uniqueID: 1090221765
+    uniqueID: 3469494253
     locked: 0

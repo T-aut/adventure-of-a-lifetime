@@ -40,13 +40,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting")) {
-            UseStamina(attackStaminaCost);
-            StartCoroutine(WaitForAttackAnimation());
+            if(currentStamina >= attackStaminaCost)
+            {
+                UseStamina(attackStaminaCost);
+                StartCoroutine(WaitForAttackAnimation());
+            }
         }
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
-            UseMana(fireballManaCost);
-            StartCoroutine(WaitForFireballAnimation());
+            if(currentMana >= fireballManaCost)
+            {
+                UseMana(fireballManaCost);
+                StartCoroutine(WaitForFireballAnimation());
+            }
         }
     }
 
