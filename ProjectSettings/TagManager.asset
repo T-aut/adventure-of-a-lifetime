@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Map Border
   - HealthSystem
+  - Props
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Props
   - Water
   - UI
   - Borders
@@ -43,7 +44,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Layer 1
+  - name: Props
     uniqueID: 2425651459
     locked: 0
   - name: Layer 2
