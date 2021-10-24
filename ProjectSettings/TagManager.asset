@@ -7,14 +7,22 @@ TagManager:
   - Map Border
   - HealthSystem
   - Props
+  - Spell
+  - Camera
+  - Grid
+  - Prop
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
   - Props
+  - Player
   - Water
   - UI
   - Borders
+  - Spells
+  - Props
+  - Grid
   - 
   - 
   - 
@@ -28,10 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
-  - Layer 11
+  - 
   - 
   - 
   - 
