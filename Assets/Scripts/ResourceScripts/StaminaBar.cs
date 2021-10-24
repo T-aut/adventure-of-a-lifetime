@@ -10,8 +10,11 @@ public class StaminaBar : MonoBehaviour
 
     public void SetStamina(float stamina)
     {
-        staminaSlider.value = stamina;
-        SetStaminaText();
+        if (stamina <= staminaSlider.maxValue)
+        {
+            staminaSlider.value = stamina;
+            SetStaminaText();
+        }
     }
 
     public void SetMaxStamina(float maxStamina)

@@ -11,15 +11,21 @@ public class PlayerController : MonoBehaviour
     public float fireballManaCost;
     public float fireballCastAnimationDuration = 0f;
     public float attackStaminaCost;
+    public float regenSecondInterval;
+    public float timeLeftUntilRegen = 0f;
     public float currentHealth;
     public float maxHealth;
     public HealthBar healthBar;
+    public float healthRegenAmount;
     public float currentMana;
     public float maxMana;
     public ManaBar manaBar;
+    public float manaRegenAmount;
     public float currentStamina;
     public float maxStamina;
     public StaminaBar staminaBar;
+    public float staminaRegenAmount;
+    public bool regenerationEnabled;
     public bool playerIsDead;
     
     void Awake()
@@ -35,12 +41,18 @@ public class PlayerController : MonoBehaviour
         UpdateMaxHealth(maxHealth);
         UpdateMaxMana(currentMana);
         UpdateMaxStamina(currentStamina);
+        timeLeftUntilRegen = regenSecondInterval;
     }
 
     void Update()
     {
+        if (regenerationEnabled)
+        {
+            RegenerateResources();
+        }
+
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting")) {
-            if(currentStamina >= attackStaminaCost)
+            if (currentStamina >= attackStaminaCost)
             {
                 UseStamina(attackStaminaCost);
                 StartCoroutine(WaitForAttackAnimation());
@@ -48,11 +60,46 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
-            if(currentMana >= fireballManaCost)
+            if (currentMana >= fireballManaCost)
             {
                 UseMana(fireballManaCost);
                 StartCoroutine(WaitForFireballAnimation());
             }
+        }
+    }
+
+    private void RegenerateResources()
+    {
+        // As time passes, there is less time left until resource regeneration.
+        timeLeftUntilRegen -= Time.deltaTime;
+
+        if (timeLeftUntilRegen <= 0f)
+        {
+            currentHealth += healthRegenAmount;
+            currentMana += manaRegenAmount;
+            currentStamina += staminaRegenAmount;
+
+            // Make sure that the regen doesn't go over the maximum values.
+            if (currentHealth >= maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+
+            if (currentMana >= maxMana)
+            {
+                currentMana = maxMana;
+            }
+
+            if (currentStamina >= maxStamina)
+            {
+                currentStamina = maxStamina;
+            }
+
+            UpdateHealth(currentHealth);
+            UpdateMana(currentMana);
+            UpdateStamina(currentStamina);
+
+            timeLeftUntilRegen = regenSecondInterval;
         }
     }
 

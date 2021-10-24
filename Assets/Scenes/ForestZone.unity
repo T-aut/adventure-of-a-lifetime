@@ -125559,6 +125559,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
+      propertyPath: manaRegenAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: healthRegenAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: staminaRegenAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: regenSecondInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: regenerationEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
       propertyPath: attackAnimationDuration
       value: 0.5
       objectReference: {fileID: 0}

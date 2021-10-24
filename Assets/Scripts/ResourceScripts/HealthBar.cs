@@ -10,8 +10,11 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(float health)
     {
-        healthSlider.value = health;
-        SetHealthText();
+        if (health <= healthSlider.maxValue)
+        {
+            healthSlider.value = health;
+            SetHealthText();
+        }
     }
 
     public void SetMaxHealth(float maxHealth)
