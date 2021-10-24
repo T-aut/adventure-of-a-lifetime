@@ -7,6 +7,12 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public PlayerMovement movement;
     public float attackAnimationDuration = 0f;
+    public float currentHealth;
+    public float maxHealth;
+    public float currentMana;
+    public float maxMana;
+    public float currentStamina;
+    public float maxStamina;
     public HealthSystem healthSystem;
 
     void Awake()
