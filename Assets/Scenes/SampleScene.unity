@@ -15571,10 +15571,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 867769465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56a041c7cdac72742a8bb0f6765f0d87, type: 3}
+  m_Script: {fileID: 11500000, guid: e3f8a1dd9994ea74f8d20fa0e0c486fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 867769466}
+  staminaSlider: {fileID: 867769466}
 --- !u!1001 &868816671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124021,6 +124021,16 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8523196959019143444, guid: 323a2355ad731ac40bb78ebcfecc3b9f,
+        type: 3}
+      propertyPath: maxStamina
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523196959019143444, guid: 323a2355ad731ac40bb78ebcfecc3b9f,
+        type: 3}
+      propertyPath: staminaBar
+      value: 
+      objectReference: {fileID: 867769468}
     - target: {fileID: 8523196959019143444, guid: 323a2355ad731ac40bb78ebcfecc3b9f,
         type: 3}
       propertyPath: currentHealth

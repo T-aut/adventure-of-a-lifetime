@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public ManaBar manaBar;
     public float currentStamina;
     public float maxStamina;
+    public StaminaBar staminaBar;
     public bool playerIsDead;
 
     void Awake()
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
         currentStamina = maxStamina;
         UpdateMaxHealth(maxHealth);
         UpdateMaxMana(currentMana);
-        UpdateStamina(currentStamina);
+        UpdateMaxStamina(currentStamina);
     }
 
     void Update()
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(health);
     }
 
-    // Set max health value in health and update health bar current health value.
+    // Set max health value in health bar and update health bar current health value.
     void UpdateMaxHealth(float maxHealth)
     {
         healthBar.SetMaxHealth(maxHealth);
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
         manaBar.SetMana(mana);
     }
 
-    // Set max mana value in mana and update mana bar current mana value.
+    // Set max mana value in mana bar and update mana bar current mana value.
     void UpdateMaxMana(float maxMana)
     {
         manaBar.SetMaxMana(maxMana);
@@ -70,7 +71,13 @@ public class PlayerController : MonoBehaviour
     // Update stamina bar value.
     void UpdateStamina(float stamina)
     {
+        staminaBar.SetStamina(stamina);
+    }
 
+    // Set max stamina value in stamina bar and update stamina bar current stamina value.
+    void UpdateMaxStamina(float maxStamina)
+    {
+        staminaBar.SetMaxStamina(maxStamina);
     }
 
     // Take damage and lose health.
