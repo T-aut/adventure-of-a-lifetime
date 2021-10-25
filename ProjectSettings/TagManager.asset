@@ -10,6 +10,8 @@ TagManager:
   - Spell
   - Prop
   - UI
+  - ManaSprite
+  - HealthSprite
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - UI
   - Player
   - Camera
-  - 
-  - 
+  - Walls
+  - Floors
   - 
   - 
   - 
@@ -52,4 +54,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3469494253
+    locked: 0
+  - name: Walls
+    uniqueID: 3258383655
     locked: 0
