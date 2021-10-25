@@ -10,11 +10,9 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(float health)
     {
-        if (health <= healthSlider.maxValue)
-        {
-            healthSlider.value = health;
-            SetHealthText();
-        }
+        // Make sure that the resource amount is within bounds of the slider values.
+        healthSlider.value = Mathf.Clamp(health, healthSlider.minValue, healthSlider.maxValue);
+        SetHealthText();
     }
 
     public void SetMaxHealth(float maxHealth)

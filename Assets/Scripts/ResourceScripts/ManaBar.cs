@@ -10,11 +10,9 @@ public class ManaBar : MonoBehaviour
 
     public void SetMana(float mana)
     {
-        if (mana <= manaSlider.maxValue)
-        {
-            manaSlider.value = mana;
-            SetManaText();
-        }
+        // Make sure that the resource amount is within bounds of the slider values.
+        manaSlider.value = Mathf.Clamp(mana, manaSlider.minValue, manaSlider.maxValue);
+        SetManaText();
     }
 
     public void SetMaxMana(float maxMana)

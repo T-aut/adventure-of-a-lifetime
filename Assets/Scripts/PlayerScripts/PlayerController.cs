@@ -75,25 +75,10 @@ public class PlayerController : MonoBehaviour
 
         if (timeLeftUntilRegen <= 0f)
         {
-            currentHealth += healthRegenAmount;
-            currentMana += manaRegenAmount;
-            currentStamina += staminaRegenAmount;
-
-            // Make sure that the regen doesn't go over the maximum values.
-            if (currentHealth >= maxHealth)
-            {
-                currentHealth = maxHealth;
-            }
-
-            if (currentMana >= maxMana)
-            {
-                currentMana = maxMana;
-            }
-
-            if (currentStamina >= maxStamina)
-            {
-                currentStamina = maxStamina;
-            }
+            // Clamp ensures that current resource amounts can never regenerate past the maximum amounts.
+            currentHealth = Mathf.Clamp(currentHealth + healthRegenAmount, 0, maxHealth);
+            currentMana = Mathf.Clamp(currentMana + manaRegenAmount, 0, maxMana);
+            currentStamina = Mathf.Clamp(currentStamina + staminaRegenAmount, 0, maxStamina);
 
             UpdateHealth(currentHealth);
             UpdateMana(currentMana);
@@ -142,12 +127,12 @@ public class PlayerController : MonoBehaviour
     // Take damage and lose health.
     void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        if (currentHealth < 0)
+        // Make sure that the health can't go below zero.
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        if (currentHealth == 0)
         {
-            // If health is below zero, the player is dead and health is set to zero.
+            // If health is zero, the player is dead.
             playerIsDead = true;
-            currentHealth = 0f;
         }
 
         // Update UI after taking damage.
@@ -157,12 +142,8 @@ public class PlayerController : MonoBehaviour
     // Use mana resource.
     void UseMana(float manaUsed)
     {
-        currentMana -= manaUsed;
-        if (currentMana < 0)
-        {
-            // If mana is below zero, it is set to zero.
-            currentMana = 0f;
-        }
+        // Make sure that the mana can't go below zero.
+        currentMana = Mathf.Clamp(currentMana - manaUsed, 0, maxMana);
 
          // Update UI after using mana.
         UpdateMana(currentMana);
@@ -171,12 +152,8 @@ public class PlayerController : MonoBehaviour
     // Use stamina resource.
     void UseStamina(float staminaUsed)
     {
-        currentStamina -= staminaUsed;
-        if (currentStamina < 0)
-        {
-            // If stamina is below zero, it is set to zero.
-            currentStamina = 0f;
-        }
+        // Make sure that the stamina can't go below zero.
+        currentStamina = Mathf.Clamp(currentStamina - staminaUsed, 0, maxStamina);
 
         // Update UI after using stamina.
         UpdateStamina(currentStamina);
