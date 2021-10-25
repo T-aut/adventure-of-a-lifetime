@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!movement.IsControlEnabled()) return;
+        
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting")) {
             StartCoroutine(WaitForAttackAnimation());
         }
