@@ -4396,6 +4396,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 2452874119196387347, guid: 944f2a4299c00bf4abb48c8411ac066c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452874119196387347, guid: 944f2a4299c00bf4abb48c8411ac066c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452874119196387347, guid: 944f2a4299c00bf4abb48c8411ac066c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452874119196387347, guid: 944f2a4299c00bf4abb48c8411ac066c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.21960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452874119196387347, guid: 944f2a4299c00bf4abb48c8411ac066c,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 944f2a4299c00bf4abb48c8411ac066c, type: 3}
 --- !u!4 &243964981 stripped
