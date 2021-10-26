@@ -3,16 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Camera
+  - Map Border
+  - Grid
+  - Spell
+  - Prop
+  - UI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Props
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Camera
   - 
   - 
   - 
@@ -40,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Props
+    uniqueID: 2391055107
+    locked: 0
+  - name: UI
+    uniqueID: 3469494253
     locked: 0
