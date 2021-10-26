@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
             RegenerateResources();
         }
 
+        if (!movement.IsControlEnabled()) return;
+        
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting")) {
             if (currentStamina >= attackStaminaCost)
             {
