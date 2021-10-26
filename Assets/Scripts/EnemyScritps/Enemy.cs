@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
             //attack, stagger little bit later
     }
     public EnemyStates currentState;
-   public Animator myAnimator;
+    public Animator myAnimator;
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
