@@ -8,6 +8,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuUI;
     public PlayerMovement PlayerMovement;
 
+    void Awake()
+    {
+        PauseMenuUI.SetActive(false);
+    }
+
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
