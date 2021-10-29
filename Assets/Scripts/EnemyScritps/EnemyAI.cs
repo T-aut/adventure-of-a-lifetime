@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     private float previous_x, previous_y;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -30,8 +31,8 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        previous_x = 1;
-        previous_y = 1;
+        // previous_x = 1;
+        // previous_y = 1;
     }
 
     private void Start()
@@ -54,27 +55,36 @@ public class EnemyAI : MonoBehaviour
             reachedEndOfPath = false;
         }
 
+
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
         Vector2 force = direction * speed * Time.deltaTime;
 
         rb.MovePosition(rb.position + force);
-       // if ((0.001 > (direction.x + previous_x) && (direction.x + previous_x) > -0.001) || (0.001 > (direction.y + previous_y) && (direction.y + previous_y) > -0.001))
-       //{
-            UpdateAnimation(direction);
-        //}
 
-        direction.x = previous_x;
-        direction.y = previous_y;
+        var delta_x = direction.x + previous_x;
+        var delta_y = direction.y + previous_y;
+
+        // dirty fix
+        // if the wolf did a complete 180 in either of the directions - DO NOT update the animation
+        //if ((delta_x < 0.01f && delta_x > -0.01f) || (delta_y < 0.01f && delta_y > -0.01f))
+        if (delta_x == 0 || delta_y == 0)
+        {
+            previous_x = direction.x;
+            previous_y = direction.y;
+            Debug.Log("turned around");
+        }
+        else
+        {
+            UpdateAnimation(direction);
+        }
+
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
-
-
-
     }
 
     public void UpdateAnimation(Vector2 direction)
