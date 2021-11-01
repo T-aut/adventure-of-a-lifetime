@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public float staminaRegenAmount;
     public bool regenerationEnabled;
     public bool playerIsDead;
-    
+
     void Awake()
     {
         playerIsDead = false;
@@ -52,8 +52,9 @@ public class PlayerController : MonoBehaviour
         }
 
         if (!movement.IsControlEnabled()) return;
-        
-        if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting")) {
+
+        if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
+        {
             if (currentStamina >= attackStaminaCost)
             {
                 UseStamina(attackStaminaCost);
@@ -67,6 +68,14 @@ public class PlayerController : MonoBehaviour
                 UseMana(fireballManaCost);
                 StartCoroutine(WaitForFireballAnimation());
             }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (currentHealth <= 0)
+        {
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 
@@ -90,7 +99,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-     // Update health bar value.
+    // Update health bar value.
     void UpdateHealth(float health)
     {
         healthBar.SetHealth(health);
@@ -147,7 +156,7 @@ public class PlayerController : MonoBehaviour
         // Make sure that the mana can't go below zero.
         currentMana = Mathf.Clamp(currentMana - manaUsed, 0, maxMana);
 
-         // Update UI after using mana.
+        // Update UI after using mana.
         UpdateMana(currentMana);
     }
 
@@ -161,7 +170,7 @@ public class PlayerController : MonoBehaviour
         UpdateStamina(currentStamina);
     }
 
-    private IEnumerator WaitForAttackAnimation() 
+    private IEnumerator WaitForAttackAnimation()
     {
         animator.SetBool("IsAttacking", true);
         movement.SetControlEnabled(false);
