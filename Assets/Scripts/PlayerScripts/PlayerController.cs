@@ -75,6 +75,10 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            movement.SetControlEnabled(false);
+            animator.SetBool("IsDead", true);
+            regenerationEnabled = false;
+            UpdateHealth(0); // Maybe UI updates should be moved to another function?
             FindObjectOfType<GameManager>().EndGame();
         }
     }
