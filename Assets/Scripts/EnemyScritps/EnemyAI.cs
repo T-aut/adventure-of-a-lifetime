@@ -1,7 +1,7 @@
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : EnemyLogic
 {
 
     Transform target;
@@ -13,8 +13,6 @@ public class EnemyAI : MonoBehaviour
     public Animator myAnimator;
     Path path;
     int currentWaypoint = 0;
-    bool reachedEndOfPath;
-    private int count = 0;
     Seeker seeker;
     Rigidbody2D rb;
     private float previous_x, previous_y;
@@ -38,21 +36,20 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("CheckDist", 0, 1f);
+        hitbox = transform.GetChild(0).GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    void FixedUpdate()
+   public override void FixedUpdate()
     {
+
+
         if (path == null)
             return;
 
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            reachedEndOfPath = true;
             return;
-        }
-        else
-        {
-            reachedEndOfPath = false;
         }
 
 
@@ -67,12 +64,10 @@ public class EnemyAI : MonoBehaviour
 
         // dirty fix
         // if the wolf did a complete 180 in either of the directions - DO NOT update the animation
-        //if ((delta_x < 0.01f && delta_x > -0.01f) || (delta_y < 0.01f && delta_y > -0.01f))
         if (delta_x == 0 || delta_y == 0)
         {
             previous_x = direction.x;
             previous_y = direction.y;
-            Debug.Log("turned around");
         }
         else
         {
@@ -85,6 +80,7 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
+        base.FixedUpdate();
     }
 
     public void UpdateAnimation(Vector2 direction)
