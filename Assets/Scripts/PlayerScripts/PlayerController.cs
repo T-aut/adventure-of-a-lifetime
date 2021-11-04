@@ -123,6 +123,7 @@ public class PlayerController : MonoBehaviour
             lastImmune = Time.time;
             currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+            movement.Push(pushDirection);
             UpdateHealth(currentHealth);
             if (currentHealth == 0)
             {

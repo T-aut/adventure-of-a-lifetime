@@ -40,8 +40,9 @@ public class Fireball : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D otherObject)
     {
         // Destroy the fireball object if it collides with anything except the player or the grid
-        if (!otherObject.gameObject.CompareTag("Player") && !otherObject.gameObject.CompareTag("Grid"))
+        if (otherObject.gameObject.CompareTag("Prop") || otherObject.gameObject.CompareTag("Map Border"))
         {
+            StartCoroutine(WaitForExplosionAnimationDestroyFireball());
             if (otherObject.tag == "Enemy")
             {
                 Damage dmg = new Damage
@@ -53,7 +54,6 @@ public class Fireball : MonoBehaviour
                 };
 
                 otherObject.SendMessage("TakeDamage", dmg);
-                StartCoroutine(WaitForExplosionAnimationDestroyFireball());
             }
             
         }
