@@ -178,6 +178,7 @@ public class PlayerController : MonoBehaviour
         // In order to enable diagonal casting we must save the player's state before the casting animation
         //  disables control
         Vector2 fireballVelocityBeforeAnimation = movement.GetDirectionVelocity();
+        animator.SetBool("FireSwordCombo", false);
         animator.SetBool("IsCasting", true);
         movement.SetControlEnabled(false);
 
