@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             RegenerateResources();
         }
 
-        if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && fireSwordComboCanHappen)
+        if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
         {
             if (currentStamina >= attackStaminaCost)
             {
