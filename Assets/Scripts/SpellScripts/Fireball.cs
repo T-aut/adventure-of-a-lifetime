@@ -9,7 +9,9 @@ public class Fireball : MonoBehaviour
     public float fireballExplosionAnimationDuration;
     public Vector3 currentDirection;
     public Rigidbody2D rb;
+    public int spellDamage = 5;
 
+    public float pushForce = 2.0f;
     // Awake is called when the object is created, but before Start
     // If we don't set the IsFlying value here, the object will never stay in the fireball_fly state
     //  because by default the boolean value at creation won't be true or false
@@ -38,9 +40,22 @@ public class Fireball : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D otherObject)
     {
         // Destroy the fireball object if it collides with anything except the player or the grid
-        if (!otherObject.gameObject.CompareTag("Player") && !otherObject.gameObject.CompareTag("Grid"))
+        if (otherObject.gameObject.CompareTag("Prop") || otherObject.gameObject.CompareTag("Map Border"))
         {
             StartCoroutine(WaitForExplosionAnimationDestroyFireball());
+            if (otherObject.tag == "Enemy")
+            {
+                Damage dmg = new Damage
+                {
+                    damageAmount = spellDamage,
+                    origin = transform.position,
+                    pushForce = pushForce
+
+                };
+
+                otherObject.SendMessage("TakeDamage", dmg);
+            }
+            
         }
     }
 
