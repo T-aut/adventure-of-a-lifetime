@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,9 +15,6 @@ public class PlayerController : MonoBehaviour
     public float attackStaminaCost;
     public float regenSecondInterval;
     public float timeLeftUntilRegen = 0f;
-    public float currentHealth;
-    public float maxHealth;
-    public HealthBar healthBar;
     public float healthRegenAmount;
     public float currentMana;
     public float maxMana;
@@ -29,7 +27,24 @@ public class PlayerController : MonoBehaviour
     public bool regenerationEnabled;
     public bool fireSwordComboCanHappen;
     public bool playerIsDead;
-    
+    private BoxCollider2D weaponCollider2D;
+    public ContactFilter2D filter;
+
+    // Damage struct 
+    public float maxHealth;
+    public HealthBar healthBar;
+    public float pushRecoverySpeed = 0.2f;
+    public float currentHealth;
+
+    // Immunity
+    public float immuneTime = 0.1f;
+    protected float lastImmune;
+
+    // Push
+    protected Vector2 pushDirection;
+
+
+
     void Awake()
     {
         playerIsDead = false;
@@ -73,14 +88,30 @@ public class PlayerController : MonoBehaviour
                 UseStamina(attackStaminaCost);
                 StartCoroutine(WaitForAttackAnimation());
             }
+            Attack();
         }
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
-            if (currentMana >= fireballManaCost)
-            {
-                UseMana(fireballManaCost);
-                StartCoroutine(WaitForFireballAnimation());
-            }
+            LaunchFireBall();
+        }
+      
+    }
+
+    void Attack()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForAttackAnimation());
+        }
+    }
+
+    void LaunchFireBall()
+    {
+        if (currentMana >= fireballManaCost)
+        {
+            UseMana(fireballManaCost);
+            StartCoroutine(WaitForFireballAnimation());
         }
     }
 
@@ -103,8 +134,22 @@ public class PlayerController : MonoBehaviour
             timeLeftUntilRegen = regenSecondInterval;
         }
     }
-
-     // Update health bar value.
+     void TakeDamage(Damage dmg)
+    {
+        if (Time.time - lastImmune > immuneTime)
+        {
+            lastImmune = Time.time;
+            currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
+            pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+            movement.Push(pushDirection);
+            UpdateHealth(currentHealth);
+            if (currentHealth == 0)
+            {
+                Death();
+            }
+        }
+    }
+    // Update health bar value.
     void UpdateHealth(float health)
     {
         healthBar.SetHealth(health);
@@ -141,18 +186,11 @@ public class PlayerController : MonoBehaviour
     }
 
     // Take damage and lose health.
-    void TakeDamage(float damage)
-    {
-        // Make sure that the health can't go below zero.
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-        if (currentHealth == 0)
-        {
-            // If health is zero, the player is dead.
-            playerIsDead = true;
-        }
 
-        // Update UI after taking damage.
-        UpdateHealth(currentHealth);
+
+    void Death()
+    {
+        playerIsDead = true;
     }
 
     // Use mana resource.
@@ -161,7 +199,7 @@ public class PlayerController : MonoBehaviour
         // Make sure that the mana can't go below zero.
         currentMana = Mathf.Clamp(currentMana - manaUsed, 0, maxMana);
 
-         // Update UI after using mana.
+        // Update UI after using mana.
         UpdateMana(currentMana);
     }
 
@@ -175,7 +213,7 @@ public class PlayerController : MonoBehaviour
         UpdateStamina(currentStamina);
     }
 
-    private IEnumerator WaitForAttackAnimation() 
+    private IEnumerator WaitForAttackAnimation()
     {
         animator.SetBool("IsAttacking", true);
         movement.SetControlEnabled(false);
@@ -226,7 +264,8 @@ public class PlayerController : MonoBehaviour
     // Creates a fireball at the appropriate location near the player with a computed velocity and angle
     private void CreateFireball(Vector2 fireballVelocity)
     {
-        Fireball fireball = Instantiate(fireballProjectile, transform.position, Quaternion.identity).GetComponent<Fireball>();
+        Fireball fireball = Instantiate(fireballProjectile, transform.position, Quaternion.identity)
+            .GetComponent<Fireball>();
         fireball.Setup(fireballVelocity, ComputeFireballAngle(fireballVelocity));
     }
 
