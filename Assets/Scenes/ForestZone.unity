@@ -4352,6 +4352,11 @@ PrefabInstance:
       propertyPath: damagePoint
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5484094696886608246, guid: ce9634870b7c29b4e93304f8cdfc117c,
+        type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 841050917}
     - target: {fileID: 5960507592384222920, guid: ce9634870b7c29b4e93304f8cdfc117c,
         type: 3}
       propertyPath: m_Name
@@ -8428,7 +8433,7 @@ Transform:
   m_Children:
   - {fileID: 243964981}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &498048217
 PrefabInstance:
@@ -8604,12 +8609,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7509736641193634087, guid: 2d546d2d8b016864ab41e2185c250eb5,
     type: 3}
   m_PrefabInstance: {fileID: 508570961}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &519420031 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8685503919481533486, guid: 35700bc98072a0d43b5aade33bfdacc0,
-    type: 3}
-  m_PrefabInstance: {fileID: 8685503919767424081}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &520591132
 PrefabInstance:
@@ -13912,7 +13911,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 519420031}
+      objectReference: {fileID: 0}
     - target: {fileID: 3476295231111537482, guid: acd0088a3d2bfff4791bce747f6fd463,
         type: 3}
       propertyPath: m_RenderMode
@@ -16413,7 +16412,7 @@ PrefabInstance:
         type: 3}
       propertyPath: PlayerMovement
       value: 
-      objectReference: {fileID: 484633428689802996}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c15ce766dd1f5644cb4b18d056722508, type: 3}
 --- !u!1001 &901115454
@@ -124168,6 +124167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
+      propertyPath: fireSwordAnimationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
       propertyPath: fireballCastAnimationDuration
       value: 0.4
       objectReference: {fileID: 0}
@@ -124179,7 +124183,7 @@ PrefabInstance:
     - target: {fileID: 484633429583499381, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 484633429583499381, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
@@ -124440,12 +124444,12 @@ PrefabInstance:
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.329025
+      value: -23.610126
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.425891
+      value: -11.431013
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}

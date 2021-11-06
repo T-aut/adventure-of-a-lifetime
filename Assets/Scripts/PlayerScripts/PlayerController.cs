@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour
     // Push
     protected Vector2 pushDirection;
 
-
-
     void Awake()
     {
         playerIsDead = false;
@@ -71,33 +69,32 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
         {
-            if (currentStamina >= attackStaminaCost)
-            {
-                fireSwordComboCanHappen = false;
-                UseStamina(attackStaminaCost);
-                StartCoroutine(WaitForFireSwordAnimation());
-            }
+            DoFireSwordCombo();
         }
 
         if (!movement.IsControlEnabled()) return;
 
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
         {
-            if (currentStamina >= attackStaminaCost)
-            {
-                UseStamina(attackStaminaCost);
-                StartCoroutine(WaitForAttackAnimation());
-            }
             Attack();
         }
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
             LaunchFireBall();
         }
-      
     }
 
-    void Attack()
+    private void DoFireSwordCombo()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            fireSwordComboCanHappen = false;
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForFireSwordAnimation());
+        }
+    }
+
+    private void Attack()
     {
         if (currentStamina >= attackStaminaCost)
         {
@@ -106,7 +103,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LaunchFireBall()
+    private void LaunchFireBall()
     {
         if (currentMana >= fireballManaCost)
         {
@@ -134,7 +131,7 @@ public class PlayerController : MonoBehaviour
             timeLeftUntilRegen = regenSecondInterval;
         }
     }
-     void TakeDamage(Damage dmg)
+    private void TakeDamage(Damage dmg)
     {
         if (Time.time - lastImmune > immuneTime)
         {
@@ -186,8 +183,6 @@ public class PlayerController : MonoBehaviour
     }
 
     // Take damage and lose health.
-
-
     void Death()
     {
         playerIsDead = true;

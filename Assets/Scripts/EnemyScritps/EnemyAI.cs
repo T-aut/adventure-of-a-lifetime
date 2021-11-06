@@ -42,8 +42,6 @@ public class EnemyAI : EnemyLogic
 
    public override void FixedUpdate()
     {
-
-
         if (path == null)
             return;
 
@@ -51,7 +49,6 @@ public class EnemyAI : EnemyLogic
         {
             return;
         }
-
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
