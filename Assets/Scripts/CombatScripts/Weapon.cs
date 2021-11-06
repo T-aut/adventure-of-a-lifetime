@@ -6,9 +6,8 @@ public class Weapon : MonoBehaviour
 {
     public int damagePoint = 1;
     public float pushForce = 2.0f;
-
+    public Animator playerAnimator;
     public ContactFilter2D filter;
-
     public BoxCollider2D boxCollider;
     public Collider2D[] hits = new Collider2D[10];
 
@@ -39,7 +38,7 @@ public class Weapon : MonoBehaviour
         {   
             Damage dmg = new Damage
             {
-                damageAmount = damagePoint,
+                damageAmount = playerAnimator.GetBool("FireSwordCombo") ? damagePoint * 3 : damagePoint,
                 origin = transform.position,
                 pushForce = pushForce
 

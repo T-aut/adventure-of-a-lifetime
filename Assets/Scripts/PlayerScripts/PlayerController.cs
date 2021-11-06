@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fireballProjectile;
     public float fireballManaCost;
     public float fireballCastAnimationDuration = 0f;
+    public float fireSwordAnimationDuration = 0f;
     public float attackStaminaCost;
     public float regenSecondInterval;
     public float timeLeftUntilRegen = 0f;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public StaminaBar staminaBar;
     public float staminaRegenAmount;
     public bool regenerationEnabled;
+    public bool fireSwordComboCanHappen;
     public bool playerIsDead;
     private BoxCollider2D weaponCollider2D;
     public ContactFilter2D filter;
@@ -41,11 +43,10 @@ public class PlayerController : MonoBehaviour
     // Push
     protected Vector2 pushDirection;
 
-
-
     void Awake()
     {
         playerIsDead = false;
+        fireSwordComboCanHappen = false;
     }
 
     void Start()
@@ -66,6 +67,11 @@ public class PlayerController : MonoBehaviour
             RegenerateResources();
         }
 
+        if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
+        {
+            DoFireSwordCombo();
+        }
+
         if (!movement.IsControlEnabled()) return;
 
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
@@ -76,10 +82,19 @@ public class PlayerController : MonoBehaviour
         {
             LaunchFireBall();
         }
-      
     }
 
-    void Attack()
+    private void DoFireSwordCombo()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            fireSwordComboCanHappen = false;
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForFireSwordAnimation());
+        }
+    }
+
+    private void Attack()
     {
         if (currentStamina >= attackStaminaCost)
         {
@@ -88,7 +103,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LaunchFireBall()
+    private void LaunchFireBall()
     {
         if (currentMana >= fireballManaCost)
         {
@@ -116,7 +131,7 @@ public class PlayerController : MonoBehaviour
             timeLeftUntilRegen = regenSecondInterval;
         }
     }
-     void TakeDamage(Damage dmg)
+    private void TakeDamage(Damage dmg)
     {
         if (Time.time - lastImmune > immuneTime)
         {
@@ -168,8 +183,6 @@ public class PlayerController : MonoBehaviour
     }
 
     // Take damage and lose health.
-
-
     void Death()
     {
         playerIsDead = true;
@@ -212,13 +225,34 @@ public class PlayerController : MonoBehaviour
         // In order to enable diagonal casting we must save the player's state before the casting animation
         //  disables control
         Vector2 fireballVelocityBeforeAnimation = movement.GetDirectionVelocity();
+        animator.SetBool("FireSwordCombo", false);
         animator.SetBool("IsCasting", true);
         movement.SetControlEnabled(false);
 
-        yield return new WaitForSeconds(fireballCastAnimationDuration);
+        // Wait half of the fireball animation for a fire sword combo.
+        fireSwordComboCanHappen = true;
+        yield return new WaitForSeconds(fireballCastAnimationDuration/2);
 
-        CreateFireball(fireballVelocityBeforeAnimation);
+        // Fire sword combo did not happen.
+        if (fireSwordComboCanHappen)
+        {
+            fireSwordComboCanHappen = false;
+            yield return new WaitForSeconds(fireballCastAnimationDuration/2);
+            CreateFireball(fireballVelocityBeforeAnimation);
+            animator.SetBool("IsCasting", false);
+            movement.SetControlEnabled(true);
+        }
+    }
+
+    private IEnumerator WaitForFireSwordAnimation()
+    {
+        animator.SetBool("FireSwordCombo", true);
+        movement.SetControlEnabled(false);
+
+        yield return new WaitForSeconds(fireSwordAnimationDuration);
+
         animator.SetBool("IsCasting", false);
+        animator.SetBool("FireSwordCombo", false);
         movement.SetControlEnabled(true);
     }
 
