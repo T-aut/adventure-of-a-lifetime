@@ -112,6 +112,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // If TakeDamage() exists and there's no other way for player to has his health decreased
+    // Maybe this Fixed update logic is not required anymore?
+    void FixedUpdate()
+    {
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+    }
+
     private void RegenerateResources()
     {
         // As time passes, there is less time left until resource regeneration.
@@ -140,7 +150,7 @@ public class PlayerController : MonoBehaviour
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
             movement.Push(pushDirection);
             UpdateHealth(currentHealth);
-            if (currentHealth == 0)
+            if (currentHealth <= 0)
             {
                 Death();
             }
@@ -185,7 +195,13 @@ public class PlayerController : MonoBehaviour
     // Take damage and lose health.
     void Death()
     {
+        movement.SetControlEnabled(false);
+        animator.SetBool("IsDead", true);
+        regenerationEnabled = false;
+        UpdateHealth(0); // Maybe UI updates should be moved to another function?
+
         playerIsDead = true;
+        FindObjectOfType<GameManager>().EndGame();
     }
 
     // Use mana resource.
@@ -231,13 +247,13 @@ public class PlayerController : MonoBehaviour
 
         // Wait half of the fireball animation for a fire sword combo.
         fireSwordComboCanHappen = true;
-        yield return new WaitForSeconds(fireballCastAnimationDuration/2);
+        yield return new WaitForSeconds(fireballCastAnimationDuration / 2);
 
         // Fire sword combo did not happen.
         if (fireSwordComboCanHappen)
         {
             fireSwordComboCanHappen = false;
-            yield return new WaitForSeconds(fireballCastAnimationDuration/2);
+            yield return new WaitForSeconds(fireballCastAnimationDuration / 2);
             CreateFireball(fireballVelocityBeforeAnimation);
             animator.SetBool("IsCasting", false);
             movement.SetControlEnabled(true);
