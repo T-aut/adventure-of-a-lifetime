@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,10 @@ public class PlayerController : MonoBehaviour
     public GameObject fireballProjectile;
     public float fireballManaCost;
     public float fireballCastAnimationDuration = 0f;
+    public float fireSwordAnimationDuration = 0f;
     public float attackStaminaCost;
     public float regenSecondInterval;
     public float timeLeftUntilRegen = 0f;
-    public float currentHealth;
-    public float maxHealth;
-    public HealthBar healthBar;
     public float healthRegenAmount;
     public float currentMana;
     public float maxMana;
@@ -26,11 +25,28 @@ public class PlayerController : MonoBehaviour
     public StaminaBar staminaBar;
     public float staminaRegenAmount;
     public bool regenerationEnabled;
+    public bool fireSwordComboCanHappen;
     public bool playerIsDead;
+    private BoxCollider2D weaponCollider2D;
+    public ContactFilter2D filter;
+
+    // Damage struct 
+    public float maxHealth;
+    public HealthBar healthBar;
+    public float pushRecoverySpeed = 0.2f;
+    public float currentHealth;
+
+    // Immunity
+    public float immuneTime = 0.1f;
+    protected float lastImmune;
+
+    // Push
+    protected Vector2 pushDirection;
 
     void Awake()
     {
         playerIsDead = false;
+        fireSwordComboCanHappen = false;
     }
 
     void Start()
@@ -51,23 +67,48 @@ public class PlayerController : MonoBehaviour
             RegenerateResources();
         }
 
+        if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
+        {
+            DoFireSwordCombo();
+        }
+
         if (!movement.IsControlEnabled()) return;
 
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
         {
-            if (currentStamina >= attackStaminaCost)
-            {
-                UseStamina(attackStaminaCost);
-                StartCoroutine(WaitForAttackAnimation());
-            }
+            Attack();
         }
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
-            if (currentMana >= fireballManaCost)
-            {
-                UseMana(fireballManaCost);
-                StartCoroutine(WaitForFireballAnimation());
-            }
+            LaunchFireBall();
+        }
+    }
+
+    private void DoFireSwordCombo()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            fireSwordComboCanHappen = false;
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForFireSwordAnimation());
+        }
+    }
+
+    private void Attack()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForAttackAnimation());
+        }
+    }
+
+    private void LaunchFireBall()
+    {
+        if (currentMana >= fireballManaCost)
+        {
+            UseMana(fireballManaCost);
+            StartCoroutine(WaitForFireballAnimation());
         }
     }
 
@@ -102,7 +143,21 @@ public class PlayerController : MonoBehaviour
             timeLeftUntilRegen = regenSecondInterval;
         }
     }
-
+    private void TakeDamage(Damage dmg)
+    {
+        if (Time.time - lastImmune > immuneTime)
+        {
+            lastImmune = Time.time;
+            currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
+            pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+            movement.Push(pushDirection);
+            UpdateHealth(currentHealth);
+            if (currentHealth == 0)
+            {
+                Death();
+            }
+        }
+    }
     // Update health bar value.
     void UpdateHealth(float health)
     {
@@ -140,18 +195,9 @@ public class PlayerController : MonoBehaviour
     }
 
     // Take damage and lose health.
-    void TakeDamage(float damage)
+    void Death()
     {
-        // Make sure that the health can't go below zero.
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-        if (currentHealth == 0)
-        {
-            // If health is zero, the player is dead.
-            playerIsDead = true;
-        }
-
-        // Update UI after taking damage.
-        UpdateHealth(currentHealth);
+        playerIsDead = true;
     }
 
     // Use mana resource.
@@ -191,20 +237,42 @@ public class PlayerController : MonoBehaviour
         // In order to enable diagonal casting we must save the player's state before the casting animation
         //  disables control
         Vector2 fireballVelocityBeforeAnimation = movement.GetDirectionVelocity();
+        animator.SetBool("FireSwordCombo", false);
         animator.SetBool("IsCasting", true);
         movement.SetControlEnabled(false);
 
-        yield return new WaitForSeconds(fireballCastAnimationDuration);
+        // Wait half of the fireball animation for a fire sword combo.
+        fireSwordComboCanHappen = true;
+        yield return new WaitForSeconds(fireballCastAnimationDuration / 2);
 
-        CreateFireball(fireballVelocityBeforeAnimation);
+        // Fire sword combo did not happen.
+        if (fireSwordComboCanHappen)
+        {
+            fireSwordComboCanHappen = false;
+            yield return new WaitForSeconds(fireballCastAnimationDuration / 2);
+            CreateFireball(fireballVelocityBeforeAnimation);
+            animator.SetBool("IsCasting", false);
+            movement.SetControlEnabled(true);
+        }
+    }
+
+    private IEnumerator WaitForFireSwordAnimation()
+    {
+        animator.SetBool("FireSwordCombo", true);
+        movement.SetControlEnabled(false);
+
+        yield return new WaitForSeconds(fireSwordAnimationDuration);
+
         animator.SetBool("IsCasting", false);
+        animator.SetBool("FireSwordCombo", false);
         movement.SetControlEnabled(true);
     }
 
     // Creates a fireball at the appropriate location near the player with a computed velocity and angle
     private void CreateFireball(Vector2 fireballVelocity)
     {
-        Fireball fireball = Instantiate(fireballProjectile, transform.position, Quaternion.identity).GetComponent<Fireball>();
+        Fireball fireball = Instantiate(fireballProjectile, transform.position, Quaternion.identity)
+            .GetComponent<Fireball>();
         fireball.Setup(fireballVelocity, ComputeFireballAngle(fireballVelocity));
     }
 
