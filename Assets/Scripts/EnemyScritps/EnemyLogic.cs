@@ -68,9 +68,8 @@ public class EnemyLogic : MonoBehaviour
         if (Time.time - lastImmune > immuneTime)
         {
             lastImmune = Time.time;
-            currentHealth = currentHealth - dmg.damageAmount;
+            currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
             Debug.Log(currentHealth);
-            //currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
             if (currentHealth == 0)
             {

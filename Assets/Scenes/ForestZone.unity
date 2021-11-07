@@ -27265,6 +27265,11 @@ PrefabInstance:
       propertyPath: aggroRange
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8361568794270899304, guid: 40d7059c5d7fe3949857d356dde5d9ad,
+        type: 3}
+      propertyPath: currentHealth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d7059c5d7fe3949857d356dde5d9ad, type: 3}
 --- !u!4 &1544586975 stripped
@@ -124444,12 +124449,12 @@ PrefabInstance:
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.610126
+      value: -23.81112
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.431013
+      value: -11.4306345
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
