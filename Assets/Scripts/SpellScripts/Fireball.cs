@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
@@ -10,6 +11,7 @@ public class Fireball : MonoBehaviour
     public Vector3 currentDirection;
     public Rigidbody2D rb;
     public int spellDamage = 5;
+    public string[] collisionTags = {"Prop", "Map Border", "Enemy"};
 
     public float pushForce = 2.0f;
     // Awake is called when the object is created, but before Start
@@ -39,8 +41,8 @@ public class Fireball : MonoBehaviour
     // This method is called when the fireball collides with another object that has a collider
     public void OnTriggerEnter2D(Collider2D otherObject)
     {
-        // Destroy the fireball object if it collides with anything except the player or the grid
-        if (otherObject.gameObject.CompareTag("Prop") || otherObject.gameObject.CompareTag("Map Border"))
+        // Destroy the fireball object if it collides with anything specified in the collision tags collection.
+        if (collisionTags.Contains(otherObject.gameObject.tag))
         {
             StartCoroutine(WaitForExplosionAnimationDestroyFireball());
             if (otherObject.tag == "Enemy")
