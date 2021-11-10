@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     public PlayerMovement movement;
+    public float dashDistance;
+    public float dashStaminaCost;
+    public float dashAnimationDuration;
     public float attackAnimationDuration = 0f;
     public GameObject fireballProjectile;
     public float fireballManaCost;
@@ -24,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float maxStamina;
     public StaminaBar staminaBar;
     public float staminaRegenAmount;
+    public bool isDashButtonDown = false;
     public bool regenerationEnabled;
     public bool fireSwordComboCanHappen;
     public bool playerIsDead;
@@ -82,6 +86,14 @@ public class PlayerController : MonoBehaviour
         {
             LaunchFireBall();
         }
+        else if (Input.GetButtonDown("Dash") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
+        {
+            if (currentStamina >= dashStaminaCost)
+            {
+                isDashButtonDown = true;
+                UseStamina(dashStaminaCost);
+            }
+        }
     }
 
     private void DoFireSwordCombo()
@@ -116,6 +128,14 @@ public class PlayerController : MonoBehaviour
     // Maybe this Fixed update logic is not required anymore?
     void FixedUpdate()
     {
+        if (isDashButtonDown)
+        {
+            Vector2 positionAfterDash = movement.rb.position + movement.GetDirectionVelocity() * dashDistance * movement.speed * Time.fixedDeltaTime;
+            movement.rb.MovePosition(positionAfterDash);
+            StartCoroutine(WaitForDashAnimation());
+            isDashButtonDown = false;
+        }
+
         if (currentHealth <= 0)
         {
             Death();
@@ -205,7 +225,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Use mana resource.
-    public void UseMana(float manaUsed)
+    private void UseMana(float manaUsed)
     {
         // Make sure that the mana can't go below zero.
         currentMana = Mathf.Clamp(currentMana - manaUsed, 0, maxMana);
@@ -215,7 +235,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Use stamina resource.
-    public void UseStamina(float staminaUsed)
+    private void UseStamina(float staminaUsed)
     {
         // Make sure that the stamina can't go below zero.
         currentStamina = Mathf.Clamp(currentStamina - staminaUsed, 0, maxStamina);
@@ -287,4 +307,14 @@ public class PlayerController : MonoBehaviour
         float degrees = Mathf.Atan2(fireballVelocity.y, fireballVelocity.x) * Mathf.Rad2Deg;
         return new Vector3(0, 0, degrees);
     }
+
+    private IEnumerator WaitForDashAnimation()
+    {
+        movement.SetControlEnabled(false);
+
+        yield return new WaitForSeconds(dashAnimationDuration);
+
+        movement.SetControlEnabled(true);
+    }
+
 }

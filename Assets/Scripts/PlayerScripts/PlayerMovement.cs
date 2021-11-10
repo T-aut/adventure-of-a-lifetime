@@ -7,12 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
-    public PlayerController playerController;
-    public float dashDistance;
-    public float dashStaminaCost;
-    public float dashAnimationDuration;
     private bool _isControlEnabled = true;
-    private bool isDashButtonDown = false;
     private Vector2 _movement = new Vector2();
 
     // Start is called before the first frame update
@@ -36,15 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (_movement.x > 0) animator.SetFloat("FacingDirection", 1);
         else if (_movement.x < 0) animator.SetFloat("FacingDirection", 3);
-
-        if (Input.GetButtonDown("Dash") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
-        {
-            if (playerController.currentStamina >= dashStaminaCost)
-            {
-                isDashButtonDown = true;
-                playerController.UseStamina(dashStaminaCost);
-            }
-        }
     }
 
     public void Push(Vector2 pushVector)
@@ -72,17 +58,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_isControlEnabled) return;
 
-        if (isDashButtonDown)
-        {
-            Vector2 positionAfterDash = rb.position + GetDirectionVelocity() * dashDistance * speed * Time.fixedDeltaTime;
-            rb.MovePosition(positionAfterDash);
-            playerController.StartCoroutine(WaitForDashAnimation());
-            isDashButtonDown = false;
-        }
-        else
-        {
-            rb.MovePosition(rb.position + _movement * speed * Time.fixedDeltaTime);
-        }
+        rb.MovePosition(rb.position + _movement * speed * Time.fixedDeltaTime);
     }
 
     public void SetControlEnabled(bool enabled)
@@ -133,10 +109,4 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsControlEnabled() => _isControlEnabled;
 
-    private IEnumerator WaitForDashAnimation()
-    {
-        SetControlEnabled(false);
-        yield return new WaitForSeconds(dashAnimationDuration);
-        SetControlEnabled(true);
-    }
 }
