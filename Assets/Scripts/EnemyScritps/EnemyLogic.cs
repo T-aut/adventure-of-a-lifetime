@@ -5,63 +5,39 @@ using UnityEngine.UIElements;
 
 public class EnemyLogic : MonoBehaviour
 {
-    
 
-    //hitbox
 
-    public BoxCollider2D hitbox;
     public BoxCollider2D boxCollider;
-    public Collider2D[] hits = new Collider2D[10];
-    public ContactFilter2D filter;
+   
     // Damage struct 
     public float maxHealth = 10;
     public float pushRecoverySpeed = 0.2f;
     public float currentHealth;
-    public int damagePoint;
-    public float pushForce = 2.0f;
 
-
+    public Animator myAnimator;
+    public float attackAnimationDuration = 0.4f;
+    public float attackCooldown;
     // Immunity
     public float immuneTime = 0.1f;
     protected float lastImmune;
-
+    public float attackRange;
+    protected Rigidbody2D rb;
+   protected Transform target;
     // Push
     protected Vector2 pushDirection;
-
     public virtual void FixedUpdate()
     {
-        Debug.Log(currentHealth);
-        hitbox.OverlapCollider(filter, hits);
-        for (int i = 0; i < hits.Length; i++)
-        {
-            if (hits[i] == null)
-                continue;
-            if (hits[i].tag == "Player")
-            {
-                OnCollide(hits[i]);
-            }
 
-            hits[i] = null;
+        float distance_between_player = Vector2.Distance(rb.position, target.position);
+        if (distance_between_player < attackRange)
+        {
+            StartCoroutine(WaitForAttackAnimation());
         }
+    
         
     }
 
-    public void OnCollide(Collider2D coll)
-    {
-        if (coll.tag == "Player")
-        {
-            Damage dmg = new Damage
-            {
-                damageAmount = damagePoint,
-                origin = transform.position,
-                pushForce = pushForce
 
-            };
-
-            coll.SendMessage("TakeDamage", dmg);
-
-        }
-    }
 
     public void TakeDamage(Damage dmg)
     {
@@ -82,5 +58,13 @@ public class EnemyLogic : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public IEnumerator WaitForAttackAnimation()
+    {
+        myAnimator.SetBool("Attacking", true);
 
+
+        yield return new WaitForSeconds(attackAnimationDuration);
+
+        myAnimator.SetBool("Attacking", false);
+    }
 }

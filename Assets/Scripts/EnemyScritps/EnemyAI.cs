@@ -4,19 +4,20 @@ using Pathfinding;
 public class EnemyAI : EnemyLogic
 {
 
-    Transform target;
+
     public Transform graphics;
 
     public float speed = 1.2f;
     public float nextWaypointDistance = 0.8f;
     public float aggroRange;
-    public Animator myAnimator;
+    
     Path path;
     int currentWaypoint = 0;
+    private float lastAttack;
+    public float attackTime = 0.1f;
     Seeker seeker;
-    Rigidbody2D rb;
-    private float previous_x, previous_y;
 
+    private float previous_x, previous_y;
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -35,16 +36,21 @@ public class EnemyAI : EnemyLogic
 
     private void Start()
     {
+        //lastAttack = Time.time;
         InvokeRepeating("CheckDist", 0, 1f);
-        hitbox = transform.GetChild(0).GetComponent<BoxCollider2D>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
    public override void FixedUpdate()
     {
+        pushDirection = Vector2.Lerp(pushDirection, Vector2.zero, pushRecoverySpeed);
+        rb.MovePosition(rb.position + pushDirection);
+        if (myAnimator.GetBool("Attacking") == true)
+            return;
+        base.FixedUpdate();
         if (path == null)
             return;
-
+       
         if (currentWaypoint >= path.vectorPath.Count)
         {
             return;
@@ -77,7 +83,8 @@ public class EnemyAI : EnemyLogic
         {
             currentWaypoint++;
         }
-        base.FixedUpdate();
+
+        
     }
 
     public void UpdateAnimation(Vector2 direction)
@@ -92,6 +99,7 @@ public class EnemyAI : EnemyLogic
 
         if (dist <= aggroRange)
         {
+
             InvokeRepeating("UpdatePath", 0, 0.5f);
         }
         else
