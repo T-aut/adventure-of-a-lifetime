@@ -28954,6 +28954,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1790468955}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1633440046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+    type: 3}
+  m_PrefabInstance: {fileID: 484633428689802995}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b24aea54bf91444680c6d79fa93b356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1639306518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124285,6 +124297,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
+      propertyPath: dashDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
       propertyPath: currentHealth
       value: 100
       objectReference: {fileID: 0}
@@ -124292,6 +124309,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentStamina
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: dashStaminaCost
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
@@ -124320,6 +124342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
+      propertyPath: dashAnimationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051925185509693013, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
       propertyPath: fireSwordAnimationDuration
       value: 0.5
       objectReference: {fileID: 0}
@@ -124327,6 +124354,26 @@ PrefabInstance:
         type: 3}
       propertyPath: fireballCastAnimationDuration
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 484633429583499376, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: dashDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 484633429583499376, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: dashStaminaCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 484633429583499376, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1633440046}
+    - target: {fileID: 484633429583499376, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: dashAnimationDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 484633429583499378, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
@@ -124396,6 +124443,11 @@ PrefabInstance:
     - target: {fileID: 484633429583499382, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
         type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 484633429583499383, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
+        type: 3}
+      propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 484633429583499404, guid: e7ecca09af7b705478b4b0b4d58d1ed0,
@@ -124602,12 +124654,12 @@ PrefabInstance:
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.784443
+      value: -23.79523
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.425033
+      value: -11.430664
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}

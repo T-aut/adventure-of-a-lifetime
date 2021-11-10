@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Use mana resource.
-    void UseMana(float manaUsed)
+    public void UseMana(float manaUsed)
     {
         // Make sure that the mana can't go below zero.
         currentMana = Mathf.Clamp(currentMana - manaUsed, 0, maxMana);
@@ -215,7 +215,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Use stamina resource.
-    void UseStamina(float staminaUsed)
+    public void UseStamina(float staminaUsed)
     {
         // Make sure that the stamina can't go below zero.
         currentStamina = Mathf.Clamp(currentStamina - staminaUsed, 0, maxStamina);
