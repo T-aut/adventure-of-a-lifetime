@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float dashDistance;
     public float dashStaminaCost;
     public float dashAnimationDuration;
+    public float dashCooldownTimer = 0f;
+    public float dashCooldown;
     public float attackAnimationDuration = 0f;
     public GameObject fireballProjectile;
     public float fireballManaCost;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float maxStamina;
     public StaminaBar staminaBar;
     public float staminaRegenAmount;
+    public bool dashCanBeUsed = true;
     public bool isDashButtonDown = false;
     public bool regenerationEnabled;
     public bool fireSwordComboCanHappen;
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
         UpdateMaxMana(currentMana);
         UpdateMaxStamina(currentStamina);
         timeLeftUntilRegen = regenSecondInterval;
+        dashCooldownTimer = dashCooldown;
     }
 
     void Update()
@@ -69,6 +73,11 @@ public class PlayerController : MonoBehaviour
         if (regenerationEnabled)
         {
             RegenerateResources();
+        }
+        
+        if (!dashCanBeUsed)
+        {
+            CalculateDashCooldownTime();
         }
 
         if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
@@ -86,7 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             LaunchFireBall();
         }
-        else if (Input.GetButtonDown("Dash") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
+        else if (Input.GetButtonDown("Dash") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting") && dashCanBeUsed)
         {
             if (currentStamina >= dashStaminaCost)
             {
@@ -124,8 +133,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // If TakeDamage() exists and there's no other way for player to has his health decreased
-    // Maybe this Fixed update logic is not required anymore?
     void FixedUpdate()
     {
         if (isDashButtonDown)
@@ -136,6 +143,8 @@ public class PlayerController : MonoBehaviour
             isDashButtonDown = false;
         }
 
+        // If TakeDamage() exists and there's no other way for player to has his health decreased
+        // Maybe this Fixed update logic is not required anymore?
         if (currentHealth <= 0)
         {
             Death();
@@ -161,6 +170,18 @@ public class PlayerController : MonoBehaviour
             timeLeftUntilRegen = regenSecondInterval;
         }
     }
+
+    private void CalculateDashCooldownTime()
+    {
+        dashCooldownTimer -= Time.deltaTime;
+
+        if (dashCooldownTimer <= 0f)
+        {
+            dashCanBeUsed = true;
+            dashCooldownTimer = dashCooldown;
+        }
+    }
+
     private void TakeDamage(Damage dmg)
     {
         if (Time.time - lastImmune > immuneTime)
@@ -316,6 +337,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashAnimationDuration);
 
         animator.SetBool("IsDashing", false);
+        dashCanBeUsed = false;
         movement.SetControlEnabled(true);
     }
 
