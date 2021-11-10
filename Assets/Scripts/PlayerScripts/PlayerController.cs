@@ -311,9 +311,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator WaitForDashAnimation()
     {
         movement.SetControlEnabled(false);
+        animator.SetBool("IsDashing", true);
 
         yield return new WaitForSeconds(dashAnimationDuration);
 
+        animator.SetBool("IsDashing", false);
         movement.SetControlEnabled(true);
     }
 
