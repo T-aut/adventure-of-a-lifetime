@@ -36,12 +36,20 @@ public class Weapon : MonoBehaviour
     {
         if (coll.tag == "Enemy")
         {   
+            if (playerAnimator.GetBool("FireSwordCombo"))
+            {
+                damagePoint *= 3;
+            }
+            else if (playerAnimator.GetBool("DeadlyStabCombo"))
+            {
+                damagePoint *= 5;
+            }
+
             Damage dmg = new Damage
             {
-                damageAmount = playerAnimator.GetBool("FireSwordCombo") ? damagePoint * 3 : damagePoint,
+                damageAmount = damagePoint,
                 origin = transform.position,
                 pushForce = pushForce
-
             };
 
             coll.SendMessage("TakeDamage", dmg);

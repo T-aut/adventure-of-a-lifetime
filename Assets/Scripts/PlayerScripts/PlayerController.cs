@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float dashAnimationDuration;
     public float dashCooldownTimer = 0f;
     public float dashCooldown;
+    public float deadlyStabComboTimeframe;
+    public float deadlyStabAnimationDuration;
     public float attackAnimationDuration = 0f;
     public GameObject fireballProjectile;
     public float fireballManaCost;
@@ -29,10 +31,11 @@ public class PlayerController : MonoBehaviour
     public float maxStamina;
     public StaminaBar staminaBar;
     public float staminaRegenAmount;
-    public bool dashCanBeUsed = true;
-    public bool isDashButtonDown = false;
+    public bool dashCanBeUsed;
+    public bool isDashButtonDown;
     public bool regenerationEnabled;
     public bool fireSwordComboCanHappen;
+    public bool deadlyStabComboCanHappen;
     public bool playerIsDead;
     private BoxCollider2D weaponCollider2D;
     public ContactFilter2D filter;
@@ -53,7 +56,10 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         playerIsDead = false;
+        dashCanBeUsed = true;
+        isDashButtonDown = false;
         fireSwordComboCanHappen = false;
+        deadlyStabComboCanHappen = false;
     }
 
     void Start()
@@ -80,13 +86,19 @@ public class PlayerController : MonoBehaviour
             CalculateDashCooldownTime();
         }
 
+        // Combo moves.
         if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
         {
             DoFireSwordCombo();
         }
+        else if (Input.GetButtonDown("Fire1") && !animator.GetBool("DeadlyStabCombo") && deadlyStabComboCanHappen)
+        {
+            DoDeadlyStabCombo();
+        }
 
         if (!movement.IsControlEnabled()) return;
 
+        // Attack, spells and abilities.
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
         {
             Attack();
@@ -112,6 +124,16 @@ public class PlayerController : MonoBehaviour
             fireSwordComboCanHappen = false;
             UseStamina(attackStaminaCost);
             StartCoroutine(WaitForFireSwordAnimation());
+        }
+    }
+
+    private void DoDeadlyStabCombo()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            deadlyStabComboCanHappen = false;
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForDeadlyStabAnimation());
         }
     }
 
@@ -338,6 +360,22 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("IsDashing", false);
         dashCanBeUsed = false;
+        movement.SetControlEnabled(true);
+
+        // Wait for deadly stab combo.
+        deadlyStabComboCanHappen = true;
+        yield return new WaitForSeconds(deadlyStabComboTimeframe);
+        deadlyStabComboCanHappen = false;
+    }
+
+    private IEnumerator WaitForDeadlyStabAnimation()
+    {
+        movement.SetControlEnabled(false);
+        animator.SetBool("DeadlyStabCombo", true);
+
+        yield return new WaitForSeconds(deadlyStabAnimationDuration);
+
+        animator.SetBool("DeadlyStabCombo", false);
         movement.SetControlEnabled(true);
     }
 
