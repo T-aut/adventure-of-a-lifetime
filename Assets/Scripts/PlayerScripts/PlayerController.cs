@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
         if (currentStamina >= attackStaminaCost)
         {
             UseStamina(attackStaminaCost);
+            SoundManagerScript.PlaySound("dagger");
             StartCoroutine(WaitForAttackAnimation());
         }
     }
@@ -108,6 +109,7 @@ public class PlayerController : MonoBehaviour
         if (currentMana >= fireballManaCost)
         {
             UseMana(fireballManaCost);
+            SoundManagerScript.PlaySound("fireball");
             StartCoroutine(WaitForFireballAnimation());
         }
     }
