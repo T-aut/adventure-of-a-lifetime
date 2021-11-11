@@ -33,11 +33,7 @@ public class EnemyLogic : MonoBehaviour
         {
             StartCoroutine(WaitForAttackAnimation());
         }
-    
-        
     }
-
-
 
     public void TakeDamage(Damage dmg)
     {
@@ -58,10 +54,10 @@ public class EnemyLogic : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
     public IEnumerator WaitForAttackAnimation()
     {
         myAnimator.SetBool("Attacking", true);
-
 
         yield return new WaitForSeconds(attackAnimationDuration);
 

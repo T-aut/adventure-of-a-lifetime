@@ -10,7 +10,7 @@ public class EnemyWeapon : MonoBehaviour
     public BoxCollider2D hitbox;
     public ContactFilter2D filter;
     public int damagePoint;
-    public float pushForce = 2.0f;
+    public float pushForce;
     // Start is called before the first frame update
     void Start()
     {

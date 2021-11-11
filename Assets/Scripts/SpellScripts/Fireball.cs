@@ -13,7 +13,7 @@ public class Fireball : MonoBehaviour
     public int spellDamage = 5;
     public string[] collisionTags = {"Prop", "Map Border", "Enemy"};
 
-    public float pushForce = 0f;
+    public float pushForce;
     // Awake is called when the object is created, but before Start
     // If we don't set the IsFlying value here, the object will never stay in the fireball_fly state
     //  because by default the boolean value at creation won't be true or false
@@ -51,7 +51,7 @@ public class Fireball : MonoBehaviour
                 {
                     damageAmount = spellDamage,
                     origin = transform.position,
-                    pushForce = 0
+                    pushForce = pushForce
 
                 };
 
