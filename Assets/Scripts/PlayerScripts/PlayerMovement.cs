@@ -37,6 +37,27 @@ public class PlayerMovement : MonoBehaviour
         else if (_movement.x < 0) animator.SetFloat("FacingDirection", 3);
     }
 
+    public void Push(Vector2 pushVector)
+    {
+        UpdatePosition(pushVector);
+    }
+
+    private void UpdatePosition(Vector2 positionVector)
+    {
+        positionVector.y = _isControlEnabled ? Input.GetAxisRaw("Vertical") : 0;
+        positionVector.x = _isControlEnabled ? Input.GetAxisRaw("Horizontal") : 0;
+
+        animator.SetBool("IsMoving", positionVector.sqrMagnitude > 0);
+        animator.SetFloat("Vertical", positionVector.y);
+        animator.SetFloat("Horizontal", positionVector.x);
+
+        if (positionVector.y > 0) animator.SetFloat("FacingDirection", 0);
+        else if (positionVector.y < 0) animator.SetFloat("FacingDirection", 2);
+
+        if (positionVector.x > 0) animator.SetFloat("FacingDirection", 1);
+        else if (positionVector.x < 0) animator.SetFloat("FacingDirection", 3);
+    }
+
     void FixedUpdate()
     {
         if (!_isControlEnabled) return;
