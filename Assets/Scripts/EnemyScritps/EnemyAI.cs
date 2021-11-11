@@ -45,7 +45,7 @@ public class EnemyAI : EnemyLogic
     {
         pushDirection = Vector2.Lerp(pushDirection, Vector2.zero, pushRecoverySpeed);
         rb.MovePosition(rb.position + pushDirection);
-        if (myAnimator.GetBool("Attacking") == true)
+        if (myAnimator.GetBool("Attacking"))
             return;
         base.FixedUpdate();
         if (path == null)
