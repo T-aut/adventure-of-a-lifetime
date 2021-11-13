@@ -26,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", _movement.y);
         animator.SetFloat("Horizontal", _movement.x);
 
+        if(animator.GetBool("IsMoving")){
+            SoundManagerScript.PlaySound("playerMove");
+        }
+
         if (_movement.y > 0) animator.SetFloat("FacingDirection", 0);
         else if (_movement.y < 0) animator.SetFloat("FacingDirection", 2);
 
