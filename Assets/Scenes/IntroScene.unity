@@ -386,6 +386,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -775,6 +780,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -1138,6 +1148,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -1282,6 +1297,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -1563,11 +1583,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
-      value: 'Exflammo: only very few selected adventurers posses the ability to
-        wield such strenght.'
+      value: 'Exflammo: Only very few selected adventurers posses the ability to
+        wield such strength.'
       objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
@@ -1783,6 +1808,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -2170,6 +2200,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -2345,6 +2380,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -2821,6 +2861,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -3226,6 +3271,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -4478,10 +4528,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
-      value: 'Exflammo: Don''t get your hopes down. When the time is right, the misterious
+      value: 'Exflammo: Don''t get your hopes down. When the time is right, the mysterious
         ways of magic will aid you.'
       objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
@@ -4729,6 +4784,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -4904,6 +4964,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -5511,6 +5576,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -5917,6 +5987,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -6928,6 +7003,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
@@ -8412,6 +8492,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1250466426}
     m_Modifications:
+    - target: {fileID: 5942442753805480134, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5942442753805480135, guid: f7d7aa2a9986349d2b94aa7f4aaa8ff6,
         type: 3}
       propertyPath: m_Text
