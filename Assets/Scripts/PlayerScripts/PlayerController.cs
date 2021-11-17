@@ -7,6 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     public PlayerMovement movement;
+    public float dashDistance;
+    public float dashStaminaCost;
+    public float dashAnimationDuration;
+    public float dashCooldownTimer = 0f;
+    public float dashCooldown;
+    public float deadlyStabComboTimeframe;
+    public float deadlyStabAnimationDuration;
     public float attackAnimationDuration = 0f;
     public GameObject fireballProjectile;
     public float fireballManaCost;
@@ -24,8 +31,11 @@ public class PlayerController : MonoBehaviour
     public float maxStamina;
     public StaminaBar staminaBar;
     public float staminaRegenAmount;
+    public bool dashCanBeUsed;
+    public bool isDashButtonDown;
     public bool regenerationEnabled;
     public bool fireSwordComboCanHappen;
+    public bool deadlyStabComboCanHappen;
     public bool playerIsDead;
     private BoxCollider2D weaponCollider2D;
     public ContactFilter2D filter;
@@ -46,7 +56,10 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         playerIsDead = false;
+        dashCanBeUsed = true;
+        isDashButtonDown = false;
         fireSwordComboCanHappen = false;
+        deadlyStabComboCanHappen = false;
     }
 
     void Start()
@@ -58,6 +71,7 @@ public class PlayerController : MonoBehaviour
         UpdateMaxMana(currentMana);
         UpdateMaxStamina(currentStamina);
         timeLeftUntilRegen = regenSecondInterval;
+        dashCooldownTimer = dashCooldown;
     }
 
     void Update()
@@ -66,14 +80,25 @@ public class PlayerController : MonoBehaviour
         {
             RegenerateResources();
         }
+        
+        if (!dashCanBeUsed)
+        {
+            CalculateDashCooldownTime();
+        }
 
+        // Combo moves.
         if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
         {
             DoFireSwordCombo();
         }
+        else if (Input.GetButtonDown("Fire1") && !animator.GetBool("DeadlyStabCombo") && deadlyStabComboCanHappen)
+        {
+            DoDeadlyStabCombo();
+        }
 
         if (!movement.IsControlEnabled()) return;
 
+        // Attack, spells and abilities.
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
         {
             Attack();
@@ -81,6 +106,14 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
             LaunchFireBall();
+        }
+        else if (Input.GetButtonDown("Dash") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting") && dashCanBeUsed)
+        {
+            if (currentStamina >= dashStaminaCost)
+            {
+                isDashButtonDown = true;
+                UseStamina(dashStaminaCost);
+            }
         }
     }
 
@@ -91,6 +124,16 @@ public class PlayerController : MonoBehaviour
             fireSwordComboCanHappen = false;
             UseStamina(attackStaminaCost);
             StartCoroutine(WaitForFireSwordAnimation());
+        }
+    }
+
+    private void DoDeadlyStabCombo()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            deadlyStabComboCanHappen = false;
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForDeadlyStabAnimation());
         }
     }
 
@@ -114,10 +157,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // If TakeDamage() exists and there's no other way for player to has his health decreased
-    // Maybe this Fixed update logic is not required anymore?
     void FixedUpdate()
     {
+        if (isDashButtonDown)
+        {
+            Vector2 positionAfterDash = movement.rb.position + movement.GetDirectionVelocity() * dashDistance * movement.speed * Time.fixedDeltaTime;
+            movement.rb.MovePosition(positionAfterDash);
+            StartCoroutine(WaitForDashAnimation());
+            isDashButtonDown = false;
+        }
+
+        // If TakeDamage() exists and there's no other way for player to has his health decreased
+        // Maybe this Fixed update logic is not required anymore?
         if (currentHealth <= 0)
         {
             Death();
@@ -143,6 +194,18 @@ public class PlayerController : MonoBehaviour
             timeLeftUntilRegen = regenSecondInterval;
         }
     }
+
+    private void CalculateDashCooldownTime()
+    {
+        dashCooldownTimer -= Time.deltaTime;
+
+        if (dashCooldownTimer <= 0f)
+        {
+            dashCanBeUsed = true;
+            dashCooldownTimer = dashCooldown;
+        }
+    }
+
     private void TakeDamage(Damage dmg)
     {
         if (Time.time - lastImmune > immuneTime)
@@ -207,7 +270,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Use mana resource.
-    void UseMana(float manaUsed)
+    private void UseMana(float manaUsed)
     {
         // Make sure that the mana can't go below zero.
         currentMana = Mathf.Clamp(currentMana - manaUsed, 0, maxMana);
@@ -217,7 +280,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Use stamina resource.
-    void UseStamina(float staminaUsed)
+    private void UseStamina(float staminaUsed)
     {
         // Make sure that the stamina can't go below zero.
         currentStamina = Mathf.Clamp(currentStamina - staminaUsed, 0, maxStamina);
@@ -289,4 +352,33 @@ public class PlayerController : MonoBehaviour
         float degrees = Mathf.Atan2(fireballVelocity.y, fireballVelocity.x) * Mathf.Rad2Deg;
         return new Vector3(0, 0, degrees);
     }
+
+    private IEnumerator WaitForDashAnimation()
+    {
+        movement.SetControlEnabled(false);
+        animator.SetBool("IsDashing", true);
+
+        yield return new WaitForSeconds(dashAnimationDuration);
+
+        animator.SetBool("IsDashing", false);
+        dashCanBeUsed = false;
+        movement.SetControlEnabled(true);
+
+        // Wait for deadly stab combo.
+        deadlyStabComboCanHappen = true;
+        yield return new WaitForSeconds(deadlyStabComboTimeframe);
+        deadlyStabComboCanHappen = false;
+    }
+
+    private IEnumerator WaitForDeadlyStabAnimation()
+    {
+        movement.SetControlEnabled(false);
+        animator.SetBool("DeadlyStabCombo", true);
+
+        yield return new WaitForSeconds(deadlyStabAnimationDuration);
+
+        animator.SetBool("DeadlyStabCombo", false);
+        movement.SetControlEnabled(true);
+    }
+
 }

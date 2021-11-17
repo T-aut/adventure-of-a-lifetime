@@ -112,4 +112,5 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool IsControlEnabled() => _isControlEnabled;
+
 }
