@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ForestZone.unity
     guid: f3e7ab8114bfed446a4150696e2b7404
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: c6daaefc4203a944da73c9acbb02e729
   m_configObjects: {}
