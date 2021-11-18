@@ -19,11 +19,12 @@ public class LevelLoader : MonoBehaviour
     void Update()
     {
         //Turetu but if(ZAIDEJAS ATITINKAMOJ SCENOS VIETOJ)
-        //pvz.: if (Input.GetMouseButtonDown(0)) - paspaudziamas pelës mygtukas
+        //pvz.: if (Input.GetMouseButtonDown(0)) - paspaudziamas pelï¿½s mygtukas
         if (ZAIDEJAS ATITINKAMOJ SCENOS VIETOJ)
-            {
-                LoadNextLevel();
-            }
+        {
+            LoadNextLevel();
+        }
+
     }
 
     public void LoadNextLevel()
