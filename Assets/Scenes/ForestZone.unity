@@ -19599,54 +19599,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - actorId: 0
-    message: Greetings mysterious adventurer! I see your face is not of a someone
-      who belongs in this world. Let me give you quick guide on how to operate in
-      this world. (Press Enter to proceed)
+    message: Greetings mysterious adventurer! I can sense that you feel overwhelmed.
+      Don't worry. Let me give you a quick guide on how to operate in this world.
+      (Press Enter to proceed)
     isUnique: 0
     uniqueId: 0
   - actorId: 0
-    message: Splendid! In order to survive you have to be mobile and flexible! So
-      try to move arround a bit.
+    message: In order to survive you have to be mobile and flexible! Try to move
+      around a bit. (Press Enter to proceed)
     isUnique: 0
     uniqueId: 0
   - actorId: 1
-    message: (Move your character using arrow keys or W A S D keys).
+    message: (Move your character using the arrow or the W A S D keys)
     isUnique: 1
     uniqueId: 1
   - actorId: 0
-    message: Good job! I see you have a knife in your pocket. How did you get that?
-      Well you can try to swing it.
+    message: Good job! I see you have a weapon in your pocket. How did you get that?
+      Well, you can try to swing it. (Press Enter to proceed)
     isUnique: 0
     uniqueId: 0
   - actorId: 1
-    message: (Launch an attack by pressing left mouse key).
+    message: (Launch an attack by pressing the left mouse button)
     isUnique: 1
     uniqueId: 2
   - actorId: 0
-    message: Woah! Be carefull swinging it like that!
+    message: Woah! Be carefull! That blade is very sharp. Might hurt somebody real
+      bad! (Press Enter to proceed)
     isUnique: 0
     uniqueId: 0
   - actorId: 0
-    message: Anyway... This world is also full of mysterious magic, but only few
-      can wield it properly...
+    message: Anyway... This world is also full of mysterious magic, but only a few
+      can wield it properly... (Press Enter to proceed)
     isUnique: 0
     uniqueId: 0
   - actorId: 1
-    message: (Press Spacebar to launch a spell).
+    message: (Press the F key to conjure a fireball)
     isUnique: 1
     uniqueId: 3
   - actorId: 0
-    message: Unbelievable. It takes years for normal human to acuire this kind of
-      magic spell mastery.
+    message: What?! Unbelievable! It takes years for a normal human to acquire this
+      level of spell mastery. You're a natural! (Press Enter to proceed)
     isUnique: 0
     uniqueId: 0
   - actorId: 0
     message: I do not think you require any more of my assistance. I sense that great
-      adventure awaits you.
+      adventure awaits you. If you wish to follow your destiny head East. (Press
+      Enter to proceed)
     isUnique: 0
     uniqueId: 0
   - actorId: 0
-    message: We may meet again someday. May the gods of fire be with you. Farewell...
+    message: We may meet again someday. May the spirits of the forest guide you.
+      Farewell... (Press Enter to proceed)
     isUnique: 0
     uniqueId: 0
   actors:
@@ -125282,12 +125285,12 @@ PrefabInstance:
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.393284
+      value: -24.72345
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.431403
+      value: -11.428897
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
