@@ -12,6 +12,7 @@ TagManager:
   - UI
   - ManaSprite
   - HealthSprite
+  - Altar
   layers:
   - Default
   - TransparentFX

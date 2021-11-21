@@ -7,7 +7,7 @@ public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
 
-    public float transitionTime = 1f;
+    public float transitionTime = 2f;
 
     //// Start is called before the first frame update
     //void Start()
@@ -16,15 +16,15 @@ public class LevelLoader : MonoBehaviour
     //}
 
     // Update is called once per frame
-    void Update()
-    {
-        //Turetu but if(ZAIDEJAS ATITINKAMOJ SCENOS VIETOJ)
-        //pvz.: if (Input.GetMouseButtonDown(0)) - paspaudziamas pelës mygtukas
-        if (Input.GetMouseButtonDown(0))
-            {
-                LoadNextLevel();
-            }
-    }
+    //void Update()
+    //{
+    //    //Turetu but if(ZAIDEJAS ATITINKAMOJ SCENOS VIETOJ)
+    //    //pvz.: if (Input.GetMouseButtonDown(0)) - paspaudziamas pelës mygtukas
+    //    if (Input.GetMouseButtonDown(0))
+    //        {
+    //            LoadNextLevel();
+    //        }
+    //}
 
     public void LoadNextLevel()
     {
