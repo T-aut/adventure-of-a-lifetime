@@ -906,7 +906,7 @@ RectTransform:
   m_Children:
   - {fileID: 166532901}
   m_Father: {fileID: 1862966146}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -957,10 +957,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2141356058}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: 
-        m_Mode: 5
+      - m_Target: {fileID: 2141356059}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: LoadGivenScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1890,7 +1890,7 @@ RectTransform:
   - {fileID: 1611884912}
   - {fileID: 1317041765}
   m_Father: {fileID: 1862966146}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2637,8 +2637,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 729605993}
-  - {fileID: 1227029093}
   - {fileID: 563541013}
+  - {fileID: 1227029093}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
