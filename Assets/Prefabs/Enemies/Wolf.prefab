@@ -178,7 +178,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02950412, y: 0}
+  m_Offset: {x: 0.007109642, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -189,7 +189,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.413504, y: 4}
+  m_Size: {x: 1.5265751, y: 4}
   m_EdgeRadius: 0
 --- !u!50 &504372685499615701
 Rigidbody2D:
@@ -201,7 +201,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 504372685499615702}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -224,44 +224,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b44c5c2fda3f745b0554811e9071db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitbox: {fileID: 0}
   boxCollider: {fileID: 0}
-  hits:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  filter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  maxHealth: 10
-  pushRecoverySpeed: 0.2
-  currentHealth: 10
-  damagePoint: 2
-  pushForce: 2
+  maxHealth: 15
+  pushRecoverySpeed: 0.3
+  currentHealth: 15
+  myAnimator: {fileID: 0}
+  attackAnimationDuration: 0.4
+  attackCooldown: 0
   immuneTime: 0.1
+  attackRange: 1.4
   graphics: {fileID: 0}
   speed: 3
   nextWaypointDistance: 0.8
-  aggroRange: 3
-  myAnimator: {fileID: 0}
+  aggroRange: 5
+  attackTime: 0.1
 --- !u!114 &6371947274102441214
 MonoBehaviour:
   m_ObjectHideFlags: 0

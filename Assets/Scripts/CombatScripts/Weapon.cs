@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public int damagePoint = 1;
-    public float pushForce = 2.0f;
+    public float pushForce;
     public Animator playerAnimator;
     public ContactFilter2D filter;
     public BoxCollider2D boxCollider;
