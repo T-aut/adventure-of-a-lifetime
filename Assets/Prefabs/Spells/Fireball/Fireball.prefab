@@ -140,6 +140,12 @@ MonoBehaviour:
   fireballExplosionAnimationDuration: 0.3
   currentDirection: {x: 0, y: 0, z: 0}
   rb: {fileID: 1912018176826092377}
+  spellDamage: 5
+  collisionTags:
+  - Prop
+  - Map Border
+  - Enemy
+  pushForce: 1
 --- !u!95 &4086496975616263213
 Animator:
   serializedVersion: 3

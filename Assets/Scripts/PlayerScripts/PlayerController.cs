@@ -48,10 +48,10 @@ public class PlayerController : MonoBehaviour
 
     // Immunity
     public float immuneTime = 0.1f;
-    protected float lastImmune;
+    public float lastImmune = 0f;
 
     // Push
-    protected Vector2 pushDirection;
+    public Vector2 pushDirection;
 
     void Awake()
     {

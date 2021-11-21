@@ -7,13 +7,15 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
-    private bool _isControlEnabled = true;
+    public bool _isControlEnabled = true;
     private Vector2 _movement = new Vector2();
 
+    private PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
         animator.SetFloat("FacingDirection", 2);
+        playerController = gameObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -61,8 +63,8 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (!_isControlEnabled) return;
-
-        rb.MovePosition(rb.position + _movement * speed * Time.fixedDeltaTime);
+        playerController.pushDirection = Vector2.Lerp(playerController.pushDirection, Vector2.zero, playerController.pushRecoverySpeed);
+        rb.MovePosition(rb.position + _movement * speed * Time.fixedDeltaTime + playerController.pushDirection);
     }
 
     public void SetControlEnabled(bool enabled)
