@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentStamina >= dashStaminaCost)
             {
+                SoundManagerScript.PlaySound("dash");
                 isDashButtonDown = true;
                 UseStamina(dashStaminaCost);
             }
@@ -131,6 +132,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentStamina >= attackStaminaCost)
         {
+            SoundManagerScript.PlaySound("comboAttack");
             deadlyStabComboCanHappen = false;
             UseStamina(attackStaminaCost);
             StartCoroutine(WaitForDeadlyStabAnimation());
@@ -210,6 +212,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time - lastImmune > immuneTime)
         {
+            SoundManagerScript.PlaySound("playerHurt");
             lastImmune = Time.time;
             currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
