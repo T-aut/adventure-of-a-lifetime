@@ -58,6 +58,7 @@ public class EnemyLogic : MonoBehaviour
 
             };
 
+            SoundManagerScript.PlaySound("wolfAttack");
             coll.SendMessage("TakeDamage", dmg);
 
         }
@@ -67,12 +68,14 @@ public class EnemyLogic : MonoBehaviour
     {
         if (Time.time - lastImmune > immuneTime)
         {
+            SoundManagerScript.PlaySound("wolfHurt");
             lastImmune = Time.time;
             currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
             Debug.Log(currentHealth);
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
             if (currentHealth == 0)
             {
+                SoundManagerScript.PlaySound("enemyDeath");
                 Death();
             }
         }

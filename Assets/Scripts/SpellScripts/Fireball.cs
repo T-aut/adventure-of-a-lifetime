@@ -44,6 +44,7 @@ public class Fireball : MonoBehaviour
         // Destroy the fireball object if it collides with anything specified in the collision tags collection.
         if (collisionTags.Contains(otherObject.gameObject.tag))
         {
+            SoundManagerScript.PlaySound("fireballExplode");
             StartCoroutine(WaitForExplosionAnimationDestroyFireball());
             if (otherObject.tag == "Enemy")
             {
