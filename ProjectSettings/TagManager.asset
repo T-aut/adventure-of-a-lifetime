@@ -13,6 +13,7 @@ TagManager:
   - ManaSprite
   - HealthSprite
   - Altar
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -24,6 +25,8 @@ TagManager:
   - Camera
   - Walls
   - Floors
+  - Obstacle
+  - Enemy
   - 
   - 
   - 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,22 @@ public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     public PlayerMovement movement;
+    public float dashDistance;
+    public float dashStaminaCost;
+    public float dashAnimationDuration;
+    public float dashCooldownTimer = 0f;
+    public float dashCooldown;
+    public float deadlyStabComboTimeframe;
+    public float deadlyStabAnimationDuration;
     public float attackAnimationDuration = 0f;
     public GameObject fireballProjectile;
     public float fireballManaCost;
+    public float fireballYOffset;
     public float fireballCastAnimationDuration = 0f;
+    public float fireSwordAnimationDuration = 0f;
     public float attackStaminaCost;
     public float regenSecondInterval;
     public float timeLeftUntilRegen = 0f;
-    public float currentHealth;
-    public float maxHealth;
-    public HealthBar healthBar;
     public float healthRegenAmount;
     public float currentMana;
     public float maxMana;
@@ -25,12 +32,35 @@ public class PlayerController : MonoBehaviour
     public float maxStamina;
     public StaminaBar staminaBar;
     public float staminaRegenAmount;
+    public bool dashCanBeUsed;
+    public bool isDashButtonDown;
     public bool regenerationEnabled;
+    public bool fireSwordComboCanHappen;
+    public bool deadlyStabComboCanHappen;
     public bool playerIsDead;
-    
+    private BoxCollider2D weaponCollider2D;
+    public ContactFilter2D filter;
+
+    // Damage struct 
+    public float maxHealth;
+    public HealthBar healthBar;
+    public float pushRecoverySpeed = 0.2f;
+    public float currentHealth;
+
+    // Immunity
+    public float immuneTime = 0.1f;
+    public float lastImmune = 0f;
+
+    // Push
+    public Vector2 pushDirection;
+
     void Awake()
     {
         playerIsDead = false;
+        dashCanBeUsed = true;
+        isDashButtonDown = false;
+        fireSwordComboCanHappen = false;
+        deadlyStabComboCanHappen = false;
     }
 
     void Start()
@@ -42,6 +72,7 @@ public class PlayerController : MonoBehaviour
         UpdateMaxMana(currentMana);
         UpdateMaxStamina(currentStamina);
         timeLeftUntilRegen = regenSecondInterval;
+        dashCooldownTimer = dashCooldown;
     }
 
     void Update()
@@ -50,21 +81,100 @@ public class PlayerController : MonoBehaviour
         {
             RegenerateResources();
         }
+        
+        if (!dashCanBeUsed)
+        {
+            CalculateDashCooldownTime();
+        }
 
-        if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting")) {
-            if (currentStamina >= attackStaminaCost)
-            {
-                UseStamina(attackStaminaCost);
-                StartCoroutine(WaitForAttackAnimation());
-            }
+        // Combo moves.
+        if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
+        {
+            DoFireSwordCombo();
+        }
+        else if (Input.GetButtonDown("Fire1") && !animator.GetBool("DeadlyStabCombo") && deadlyStabComboCanHappen)
+        {
+            DoDeadlyStabCombo();
+        }
+
+        if (!movement.IsControlEnabled()) return;
+
+        // Attack, spells and abilities.
+        if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
+        {
+            Attack();
         }
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
-            if (currentMana >= fireballManaCost)
+            LaunchFireBall();
+        }
+        else if (Input.GetButtonDown("Dash") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting") && dashCanBeUsed)
+        {
+            if (currentStamina >= dashStaminaCost)
             {
-                UseMana(fireballManaCost);
-                StartCoroutine(WaitForFireballAnimation());
+                SoundManagerScript.PlaySound("dash");
+                isDashButtonDown = true;
+                UseStamina(dashStaminaCost);
             }
+        }
+    }
+
+    private void DoFireSwordCombo()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            fireSwordComboCanHappen = false;
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForFireSwordAnimation());
+        }
+    }
+
+    private void DoDeadlyStabCombo()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            SoundManagerScript.PlaySound("comboAttack");
+            deadlyStabComboCanHappen = false;
+            UseStamina(attackStaminaCost);
+            StartCoroutine(WaitForDeadlyStabAnimation());
+        }
+    }
+
+    private void Attack()
+    {
+        if (currentStamina >= attackStaminaCost)
+        {
+            UseStamina(attackStaminaCost);
+            SoundManagerScript.PlaySound("dagger");
+            StartCoroutine(WaitForAttackAnimation());
+        }
+    }
+
+    private void LaunchFireBall()
+    {
+        if (currentMana >= fireballManaCost)
+        {
+            UseMana(fireballManaCost);
+            SoundManagerScript.PlaySound("fireball");
+            StartCoroutine(WaitForFireballAnimation());
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isDashButtonDown)
+        {
+            Vector2 positionAfterDash = movement.rb.position + movement.GetDirectionVelocity() * dashDistance * movement.speed * Time.fixedDeltaTime;
+            movement.rb.MovePosition(positionAfterDash);
+            StartCoroutine(WaitForDashAnimation());
+            isDashButtonDown = false;
+        }
+
+        // If TakeDamage() exists and there's no other way for player to has his health decreased
+        // Maybe this Fixed update logic is not required anymore?
+        if (currentHealth <= 0)
+        {
+            Death();
         }
     }
 
@@ -75,25 +185,10 @@ public class PlayerController : MonoBehaviour
 
         if (timeLeftUntilRegen <= 0f)
         {
-            currentHealth += healthRegenAmount;
-            currentMana += manaRegenAmount;
-            currentStamina += staminaRegenAmount;
-
-            // Make sure that the regen doesn't go over the maximum values.
-            if (currentHealth >= maxHealth)
-            {
-                currentHealth = maxHealth;
-            }
-
-            if (currentMana >= maxMana)
-            {
-                currentMana = maxMana;
-            }
-
-            if (currentStamina >= maxStamina)
-            {
-                currentStamina = maxStamina;
-            }
+            // Clamp ensures that current resource amounts can never regenerate past the maximum amounts.
+            currentHealth = Mathf.Clamp(currentHealth + healthRegenAmount, 0, maxHealth);
+            currentMana = Mathf.Clamp(currentMana + manaRegenAmount, 0, maxMana);
+            currentStamina = Mathf.Clamp(currentStamina + staminaRegenAmount, 0, maxStamina);
 
             UpdateHealth(currentHealth);
             UpdateMana(currentMana);
@@ -103,7 +198,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-     // Update health bar value.
+    private void CalculateDashCooldownTime()
+    {
+        dashCooldownTimer -= Time.deltaTime;
+
+        if (dashCooldownTimer <= 0f)
+        {
+            dashCanBeUsed = true;
+            dashCooldownTimer = dashCooldown;
+        }
+    }
+
+    private void TakeDamage(Damage dmg)
+    {
+        if (Time.time - lastImmune > immuneTime)
+        {
+            SoundManagerScript.PlaySound("playerHurt");
+            lastImmune = Time.time;
+            currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
+            pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+            movement.Push(pushDirection);
+            UpdateHealth(currentHealth);
+            if (currentHealth <= 0)
+            {
+                Death();
+            }
+        }
+    }
+    // Update health bar value.
     void UpdateHealth(float health)
     {
         healthBar.SetHealth(health);
@@ -140,49 +262,38 @@ public class PlayerController : MonoBehaviour
     }
 
     // Take damage and lose health.
-    void TakeDamage(float damage)
+    void Death()
     {
-        currentHealth -= damage;
-        if (currentHealth < 0)
-        {
-            // If health is below zero, the player is dead and health is set to zero.
-            playerIsDead = true;
-            currentHealth = 0f;
-        }
+        movement.SetControlEnabled(false);
+        animator.SetBool("IsDead", true);
+        regenerationEnabled = false;
+        UpdateHealth(0); // Maybe UI updates should be moved to another function?
 
-        // Update UI after taking damage.
-        UpdateHealth(currentHealth);
+        playerIsDead = true;
+        FindObjectOfType<GameManager>().EndGame();
     }
 
     // Use mana resource.
-    void UseMana(float manaUsed)
+    private void UseMana(float manaUsed)
     {
-        currentMana -= manaUsed;
-        if (currentMana < 0)
-        {
-            // If mana is below zero, it is set to zero.
-            currentMana = 0f;
-        }
+        // Make sure that the mana can't go below zero.
+        currentMana = Mathf.Clamp(currentMana - manaUsed, 0, maxMana);
 
-         // Update UI after using mana.
+        // Update UI after using mana.
         UpdateMana(currentMana);
     }
 
     // Use stamina resource.
-    void UseStamina(float staminaUsed)
+    private void UseStamina(float staminaUsed)
     {
-        currentStamina -= staminaUsed;
-        if (currentStamina < 0)
-        {
-            // If stamina is below zero, it is set to zero.
-            currentStamina = 0f;
-        }
+        // Make sure that the stamina can't go below zero.
+        currentStamina = Mathf.Clamp(currentStamina - staminaUsed, 0, maxStamina);
 
         // Update UI after using stamina.
         UpdateStamina(currentStamina);
     }
 
-    private IEnumerator WaitForAttackAnimation() 
+    private IEnumerator WaitForAttackAnimation()
     {
         animator.SetBool("IsAttacking", true);
         movement.SetControlEnabled(false);
@@ -199,20 +310,46 @@ public class PlayerController : MonoBehaviour
         // In order to enable diagonal casting we must save the player's state before the casting animation
         //  disables control
         Vector2 fireballVelocityBeforeAnimation = movement.GetDirectionVelocity();
+        animator.SetBool("FireSwordCombo", false);
         animator.SetBool("IsCasting", true);
         movement.SetControlEnabled(false);
 
-        yield return new WaitForSeconds(fireballCastAnimationDuration);
+        // Wait half of the fireball animation for a fire sword combo.
+        fireSwordComboCanHappen = true;
+        yield return new WaitForSeconds(fireballCastAnimationDuration / 2);
 
-        CreateFireball(fireballVelocityBeforeAnimation);
+        // Fire sword combo did not happen.
+        if (fireSwordComboCanHappen)
+        {
+            fireSwordComboCanHappen = false;
+            yield return new WaitForSeconds(fireballCastAnimationDuration / 2);
+            CreateFireball(fireballVelocityBeforeAnimation);
+            animator.SetBool("IsCasting", false);
+            movement.SetControlEnabled(true);
+        }
+    }
+
+    private IEnumerator WaitForFireSwordAnimation()
+    {
+        animator.SetBool("FireSwordCombo", true);
+        movement.SetControlEnabled(false);
+
+        yield return new WaitForSeconds(fireSwordAnimationDuration);
+
         animator.SetBool("IsCasting", false);
+        animator.SetBool("FireSwordCombo", false);
         movement.SetControlEnabled(true);
     }
 
     // Creates a fireball at the appropriate location near the player with a computed velocity and angle
     private void CreateFireball(Vector2 fireballVelocity)
     {
-        Fireball fireball = Instantiate(fireballProjectile, transform.position, Quaternion.identity).GetComponent<Fireball>();
+        // If the player is facing downwards we don't want to offset the fireball, because then it renders below the player model.
+        Vector3 fireballOffset;
+        fireballOffset = animator.GetFloat("FacingDirection") == 2f ? new Vector3(0, 0, 0) : new Vector3(0, fireballYOffset, 0);
+
+        Fireball fireball = Instantiate(fireballProjectile, transform.position + fireballOffset, Quaternion.identity)
+            .GetComponent<Fireball>();
         fireball.Setup(fireballVelocity, ComputeFireballAngle(fireballVelocity));
     }
 
@@ -223,4 +360,33 @@ public class PlayerController : MonoBehaviour
         float degrees = Mathf.Atan2(fireballVelocity.y, fireballVelocity.x) * Mathf.Rad2Deg;
         return new Vector3(0, 0, degrees);
     }
+
+    private IEnumerator WaitForDashAnimation()
+    {
+        movement.SetControlEnabled(false);
+        animator.SetBool("IsDashing", true);
+
+        yield return new WaitForSeconds(dashAnimationDuration);
+
+        animator.SetBool("IsDashing", false);
+        dashCanBeUsed = false;
+        movement.SetControlEnabled(true);
+
+        // Wait for deadly stab combo.
+        deadlyStabComboCanHappen = true;
+        yield return new WaitForSeconds(deadlyStabComboTimeframe);
+        deadlyStabComboCanHappen = false;
+    }
+
+    private IEnumerator WaitForDeadlyStabAnimation()
+    {
+        movement.SetControlEnabled(false);
+        animator.SetBool("DeadlyStabCombo", true);
+
+        yield return new WaitForSeconds(deadlyStabAnimationDuration);
+
+        animator.SetBool("DeadlyStabCombo", false);
+        movement.SetControlEnabled(true);
+    }
+
 }

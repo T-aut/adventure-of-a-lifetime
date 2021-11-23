@@ -10,11 +10,9 @@ public class StaminaBar : MonoBehaviour
 
     public void SetStamina(float stamina)
     {
-        if (stamina <= staminaSlider.maxValue)
-        {
-            staminaSlider.value = stamina;
-            SetStaminaText();
-        }
+        // Make sure that the resource amount is within bounds of the slider values.
+        staminaSlider.value = Mathf.Clamp(stamina, staminaSlider.minValue, staminaSlider.maxValue);
+        SetStaminaText();
     }
 
     public void SetMaxStamina(float maxStamina)

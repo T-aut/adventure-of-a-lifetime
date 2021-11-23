@@ -56,6 +56,66 @@ TextureImporter:
   - first:
       213: 5727575950173681214
     second: wolfsheet1_17
+  - first:
+      213: -5048966745781339461
+    second: wolf_attack_right0
+  - first:
+      213: -4415020824791801895
+    second: wolf_attack_right1
+  - first:
+      213: -5887456213747316114
+    second: wolf_attack_right2
+  - first:
+      213: -7377634391129206724
+    second: wolf_attack_right3
+  - first:
+      213: -6898781352384922298
+    second: wolf_attack_right4
+  - first:
+      213: 1684055312406961835
+    second: wolf_attack_left0
+  - first:
+      213: -982212359452996268
+    second: wolf_attack_left1
+  - first:
+      213: -6232832273201411306
+    second: wolf_attack_left2
+  - first:
+      213: 6144117646074773795
+    second: wolf_attack_left3
+  - first:
+      213: 3392394737018576379
+    second: wolf_attack_left4
+  - first:
+      213: 6353479552704395789
+    second: wolf_attack_down0
+  - first:
+      213: -5679207695159106342
+    second: wolf_attack_down1
+  - first:
+      213: 3454694489847855185
+    second: wolf_attack_down2
+  - first:
+      213: 913000133966436184
+    second: wolf_attack_down3
+  - first:
+      213: -5869784790312068713
+    second: wolf_attack_down4
+  - first:
+      213: 386956346309468350
+    second: wolf_attack_up0
+  - first:
+      213: -2498458515434605446
+    second: wolf_attack_up1
+  - first:
+      213: -7654308578536232271
+    second: wolf_attack_up2
+  - first:
+      213: 1178014730710684178
+    second: wolf_attack_up3
+  - first:
+      213: -3328449194814139668
+    second: wolf_attack_up4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -518,6 +578,426 @@ TextureImporter:
       bones: []
       spriteID: e363c2e0bff6c7f40800000000000000
       internalID: 5727575950173681214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_right0
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 192
+        width: 65
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba71face777ee9b0800000000000000
+      internalID: -5048966745781339461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_right1
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 193
+        width: 62
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df155e93f1bab2c0800000000000000
+      internalID: -4415020824791801895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_right2
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 191
+        width: 64
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6acce444cd8b4ea0800000000000000
+      internalID: -5887456213747316114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_right3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 192
+        width: 64
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c30d9021c906d9990800000000000000
+      internalID: -7377634391129206724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_right4
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 191
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64df10c49ea9240a0800000000000000
+      internalID: -6898781352384922298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_left0
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 63
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bae50265267fe5710800000000000000
+      internalID: 1684055312406961835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_left1
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 1
+        width: 61
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d4ec4201b7e52f0800000000000000
+      internalID: -982212359452996268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_left2
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 63
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61b4d3b02188089a0800000000000000
+      internalID: -6232832273201411306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_left3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1
+        width: 64
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3210f78327a444550800000000000000
+      internalID: 6144117646074773795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_left4
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 0
+        width: 63
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd95e52a05341f20800000000000000
+      internalID: 3392394737018576379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_down0
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 62
+        width: 29
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a37a2bdf71c2850800000000000000
+      internalID: 6353479552704395789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_down1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 63
+        width: 25
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad46064e0b66f21b0800000000000000
+      internalID: -5679207695159106342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_down2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 64
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15871e2b55a81ff20800000000000000
+      internalID: 3454694489847855185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_down3
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 62
+        width: 29
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85714f8d8c0abac00800000000000000
+      internalID: 913000133966436184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_down4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 62
+        width: 30
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799557925d55a8ea0800000000000000
+      internalID: -5869784790312068713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_up0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 67
+        width: 28
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb0eb5d2fbebe5500800000000000000
+      internalID: 386956346309468350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_up1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 67
+        width: 26
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a747875b731b35dd0800000000000000
+      internalID: -2498458515434605446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_up2
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 66
+        width: 25
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba6f1fe6ee66c590800000000000000
+      internalID: -7654308578536232271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_up3
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 67
+        width: 27
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 212103cf726295010800000000000000
+      internalID: 1178014730710684178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_attack_up4
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 68
+        width: 26
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce21b2a9719fec1d0800000000000000
+      internalID: -3328449194814139668
       vertices: []
       indices: 
       edges: []

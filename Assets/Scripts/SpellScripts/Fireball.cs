@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
@@ -9,7 +10,10 @@ public class Fireball : MonoBehaviour
     public float fireballExplosionAnimationDuration;
     public Vector3 currentDirection;
     public Rigidbody2D rb;
+    public int spellDamage = 5;
+    public string[] collisionTags = {"Prop", "Map Border", "Enemy"};
 
+    public float pushForce;
     // Awake is called when the object is created, but before Start
     // If we don't set the IsFlying value here, the object will never stay in the fireball_fly state
     //  because by default the boolean value at creation won't be true or false
@@ -37,10 +41,24 @@ public class Fireball : MonoBehaviour
     // This method is called when the fireball collides with another object that has a collider
     public void OnTriggerEnter2D(Collider2D otherObject)
     {
-        // Destroy the fireball object if it collides with anything except the player or the grid
-        if (!otherObject.gameObject.CompareTag("Player") && !otherObject.gameObject.CompareTag("Grid"))
+        // Destroy the fireball object if it collides with anything specified in the collision tags collection.
+        if (collisionTags.Contains(otherObject.gameObject.tag))
         {
+            SoundManagerScript.PlaySound("fireballExplode");
             StartCoroutine(WaitForExplosionAnimationDestroyFireball());
+            if (otherObject.tag == "Enemy")
+            {
+                Damage dmg = new Damage
+                {
+                    damageAmount = spellDamage,
+                    origin = transform.position,
+                    pushForce = pushForce
+
+                };
+
+                otherObject.SendMessage("TakeDamage", dmg);
+            }
+            
         }
     }
 
