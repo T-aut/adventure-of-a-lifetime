@@ -6,11 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CastleForest.unity
-    guid: f3e7ab8114bfed446a4150696e2b7404
-  - enabled: 1
-    path: Assets/Scenes/CastleZone.unity
-    guid: 264ecf42333423d46b66fc539573cdf1
     path: Assets/Scenes/MainMenu.unity
     guid: 253687c5b175be24e99514c98ade5613
   - enabled: 1
@@ -18,7 +13,10 @@ EditorBuildSettings:
     guid: db2ecf9019b6e9144b26b70204f50ff9
   - enabled: 1
     path: Assets/Scenes/ForestZone.unity
-    guid: a0e165aae3b70534099c420520f0123e
+    guid: ee24a6a9640bd7b49af1c21b602c60ca
+  - enabled: 1
+    path: Assets/Scenes/CastleZone.unity
+    guid: 264ecf42333423d46b66fc539573cdf1
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: c6daaefc4203a944da73c9acbb02e729

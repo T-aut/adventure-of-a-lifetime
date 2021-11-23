@@ -47,25 +47,13 @@ namespace Cainos.PixelArtTopDown_Basic
             }
             else if(isStanding && timeRemaining <= 0)
             {
-                LoadNextLevel();
+                LoadLevelLoaderScene();
             }
         }
 
-        public void LoadNextLevel()
+        public void LoadLevelLoaderScene()
         {
-            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-        }
-
-        IEnumerator LoadLevel(int levelIndex)
-        {
-            //Play animation
-            // transition.SetTrigger("Start");
-
-            //Wait
-            yield return new WaitForSeconds(1f);
-
-            //Load scene
-            SceneManager.LoadScene(levelIndex);
+            _levelLoader.LoadGivenScene();
         }
     }
 }

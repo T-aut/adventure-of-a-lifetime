@@ -9011,7 +9011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.349903, y: 14.596044, z: -10}
+  m_LocalPosition: {x: -40.830055, y: 14.587528, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -123123,6 +123123,11 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2440844624711060802, guid: c5bdca1933fde624698bb8c6d6daa44b,
+        type: 3}
+      propertyPath: _levelLoader
+      value: 
+      objectReference: {fileID: 2110993598}
     - target: {fileID: 3644440869396892318, guid: c5bdca1933fde624698bb8c6d6daa44b,
         type: 3}
       propertyPath: m_Layer
@@ -124914,6 +124919,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 162099611737664020, guid: 3c0cb131a61af944e98fe5f3c8dffe34,
+        type: 3}
+      propertyPath: sceneNameToLoad
+      value: CastleZone
+      objectReference: {fileID: 0}
     - target: {fileID: 2173042372316344841, guid: 3c0cb131a61af944e98fe5f3c8dffe34,
         type: 3}
       propertyPath: m_Name
@@ -124981,6 +124991,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c0cb131a61af944e98fe5f3c8dffe34, type: 3}
+--- !u!114 &2110993598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 162099611737664020, guid: 3c0cb131a61af944e98fe5f3c8dffe34,
+    type: 3}
+  m_PrefabInstance: {fileID: 2110993597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64b8e213b8bc7e49902c1fef50ba487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2111690461 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: 5b94bf9107369684a8153921f763da38,
