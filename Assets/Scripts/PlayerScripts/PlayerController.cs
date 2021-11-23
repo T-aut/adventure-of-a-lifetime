@@ -169,13 +169,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(WaitForDashAnimation());
             isDashButtonDown = false;
         }
-
-        // If TakeDamage() exists and there's no other way for player to has his health decreased
-        // Maybe this Fixed update logic is not required anymore?
-        if (currentHealth <= 0)
-        {
-            Death();
-        }
     }
 
     private void RegenerateResources()
