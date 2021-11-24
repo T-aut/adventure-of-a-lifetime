@@ -57,6 +57,9 @@ public class EnemyLogic : MonoBehaviour
     protected void Death()
     {
         playerMovement.ResetVelocity();
+        pushDirection = Vector2.zero;
+        rb.velocity = Vector3.zero;
+        rb.mass = 10000;
         isDead = true;
         StartCoroutine(WaitForDeathAnimation());
     }
