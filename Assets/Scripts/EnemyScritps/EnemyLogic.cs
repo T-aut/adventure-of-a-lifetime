@@ -19,6 +19,7 @@ public class EnemyLogic : MonoBehaviour
     public float immuneTime = 0.1f;
     protected float lastImmune;
     public float attackRange;
+    private string objectName;
     protected Rigidbody2D rb;
     protected Transform target;
     protected bool isDead = false;
@@ -26,10 +27,16 @@ public class EnemyLogic : MonoBehaviour
     protected Vector2 pushDirection;
     public virtual void FixedUpdate()
     {
+
         float distance_between_player = Vector2.Distance(rb.position, target.position);
         if (distance_between_player < attackRange && !isDead)
         {
-            SoundManagerScript.PlaySound("wolfAttack");
+            objectName = gameObject.name;
+            if(objectName.StartsWith("Wolf")){
+                SoundManagerScript.PlaySound("wolfAttack");
+            } else if(objectName.StartsWith("Skeleton")) {
+               SoundManagerScript.PlaySound("skeletonAttack");
+            }
             StartCoroutine(WaitForAttackAnimation());
         }
     }
@@ -38,7 +45,12 @@ public class EnemyLogic : MonoBehaviour
     {
         if (Time.time - lastImmune > immuneTime)
         {
-            SoundManagerScript.PlaySound("wolfHurt");
+            objectName = gameObject.name;
+            if(objectName.StartsWith("Wolf")){
+                SoundManagerScript.PlaySound("wolfHurt");
+            } else if(objectName.StartsWith("Skeleton")) {
+                SoundManagerScript.PlaySound("skeletonHurt");
+            }
             lastImmune = Time.time;
             currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
             
@@ -48,6 +60,7 @@ public class EnemyLogic : MonoBehaviour
             if (currentHealth == 0)
             {
                 SoundManagerScript.PlaySound("enemyDeath");
+                Destroy(gameObject.GetComponent<BoxCollider2D>());
                 Death();
             }
         }

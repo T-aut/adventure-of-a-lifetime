@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip playerMoveSound, fireballSound, daggerSound, fireballExplodeSound,
+    public static AudioClip playerMoveSound, fireballSound, daggerSound, fireballExplodeSound, skeletonHurtSound, skeletonAttackSound,
      wolfHurtSound, enemyDeathSound, wolfAttackSound, playerHurtSound, dashSound, comboAttackSound;
-    public static AudioSource audioSource, audio1, audio2, audio3; 
+    public static AudioSource audioSource, audio1, audio2, audio3, audio4, audio5; 
 
-    public float delay = 0.5f;
-    public float lastDelay;
+    public static float delay = 5f;
+    public static float lastDelay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,16 +17,20 @@ public class SoundManagerScript : MonoBehaviour
         daggerSound = Resources.Load<AudioClip> ("Audio/Effects/dagger");
         fireballExplodeSound = Resources.Load<AudioClip> ("Audio/Effects/fireballExplode");
         wolfHurtSound = Resources.Load<AudioClip> ("Audio/Effects/wolfHurt");
+        skeletonHurtSound = Resources.Load<AudioClip> ("Audio/Effects/skeletonHurt");
         enemyDeathSound = Resources.Load<AudioClip> ("Audio/Effects/enemyDeath");
         wolfAttackSound = Resources.Load<AudioClip> ("Audio/Effects/wolfAttack");
         playerHurtSound = Resources.Load<AudioClip> ("Audio/Effects/playerHurt");
         dashSound = Resources.Load<AudioClip> ("Audio/Effects/dash");
         comboAttackSound = Resources.Load<AudioClip> ("Audio/Effects/comboAttack");
+        skeletonAttackSound = Resources.Load<AudioClip> ("Audio/Effects/skeletonAttack");
 
         audioSource = GetComponent<AudioSource> ();  
         audio1 = gameObject.AddComponent<AudioSource>();
         audio2 = gameObject.AddComponent<AudioSource>();
         audio3 = gameObject.AddComponent<AudioSource>();
+        audio4 = gameObject.AddComponent<AudioSource>();
+        audio5 = gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,8 +60,13 @@ public class SoundManagerScript : MonoBehaviour
                     audio3.PlayOneShot(wolfHurtSound, 0.7f);
                 }   
                 break;
+            case "skeletonHurt":  
+                if(!audio4.isPlaying){
+                    audio4.PlayOneShot(skeletonHurtSound);
+                }   
+                break;
             case "enemyDeath":
-                audioSource.PlayOneShot(enemyDeathSound);
+                audioSource.PlayOneShot(enemyDeathSound, 3.5f); 
                 break;
             case "wolfAttack":
                 if(!audio2.isPlaying){
@@ -73,6 +83,11 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "comboAttack":
                 audioSource.PlayOneShot(comboAttackSound);
+                break;
+            case "skeletonAttack":
+                if(!audio5.isPlaying){
+                    audioSource.PlayOneShot(skeletonAttackSound);
+                }
                 break;
         }
     }
