@@ -38,7 +38,7 @@ public class EnemyAI : EnemyLogic
     }
 
    public override void FixedUpdate()
-    {
+    {   if (isDead) return;
         pushDirection = Vector2.Lerp(pushDirection, Vector2.zero, pushRecoverySpeed);
         rb.MovePosition(rb.position + pushDirection);
         if (myAnimator.GetBool("Attacking"))
@@ -93,7 +93,7 @@ public class EnemyAI : EnemyLogic
 
         if (dist <= aggroRange)
         {
-
+            
             InvokeRepeating("UpdatePath", 0, 0.5f);
         }
         else
