@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5444938954325279734}
   - component: {fileID: 5444938954325279733}
   - component: {fileID: 5444938954325279735}
+  - component: {fileID: 7721609300341788959}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -102,3 +103,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &7721609300341788959
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5444938954325279732}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.007583618, y: 0.18945122}
+  m_Size: {x: 0.33345032, y: 0.37890244}
+  m_Direction: 0
