@@ -26,9 +26,8 @@ public class EnemyLogic : MonoBehaviour
     protected Vector2 pushDirection;
     public virtual void FixedUpdate()
     {
-
         float distance_between_player = Vector2.Distance(rb.position, target.position);
-        if (distance_between_player < attackRange)
+        if (distance_between_player < attackRange && !isDead)
         {
             SoundManagerScript.PlaySound("wolfAttack");
             StartCoroutine(WaitForAttackAnimation());
