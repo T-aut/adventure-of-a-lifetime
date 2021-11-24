@@ -3,14 +3,10 @@ using Pathfinding;
 
 public class EnemyAI : EnemyLogic
 {
-
-
     public Transform graphics;
-
     public float speed = 1.2f;
     public float nextWaypointDistance = 0.8f;
     public float aggroRange;
-    
     Path path;
     int currentWaypoint = 0;
     private float lastAttack;
@@ -83,8 +79,6 @@ public class EnemyAI : EnemyLogic
         {
             currentWaypoint++;
         }
-
-        
     }
 
     public void UpdateAnimation(Vector2 direction)

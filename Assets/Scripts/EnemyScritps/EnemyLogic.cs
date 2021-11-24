@@ -5,16 +5,13 @@ using UnityEngine.UIElements;
 
 public class EnemyLogic : MonoBehaviour
 {
-
-
     public BoxCollider2D boxCollider;
-   
     // Damage struct 
     public float maxHealth = 10;
     public float pushRecoverySpeed = 0.2f;
     public float currentHealth;
-
     public Animator myAnimator;
+    public PlayerMovement playerMovement;
     public float attackAnimationDuration = 0.4f;
     public float attackCooldown;
     // Immunity
@@ -22,7 +19,7 @@ public class EnemyLogic : MonoBehaviour
     protected float lastImmune;
     public float attackRange;
     protected Rigidbody2D rb;
-   protected Transform target;
+    protected Transform target;
     // Push
     protected Vector2 pushDirection;
     public virtual void FixedUpdate()
@@ -55,6 +52,7 @@ public class EnemyLogic : MonoBehaviour
 
     protected void Death()
     {
+        playerMovement.ResetVelocity();
         Destroy(gameObject);
     }
 

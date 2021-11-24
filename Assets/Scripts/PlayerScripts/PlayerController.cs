@@ -87,6 +87,11 @@ public class PlayerController : MonoBehaviour
             CalculateDashCooldownTime();
         }
 
+        if (Input.GetKeyDown("h"))
+        {
+            movement.ResetVelocity();
+        }
+
         // Combo moves.
         if (Input.GetButtonDown("Fire1") && animator.GetBool("IsCasting") && !animator.GetBool("FireSwordCombo") && fireSwordComboCanHappen)
         {

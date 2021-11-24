@@ -369,7 +369,7 @@ TextureImporter:
         serializedVersion: 2
         x: 192
         y: 128
-        width: 64
+        width: 59
         height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -388,9 +388,9 @@ TextureImporter:
       name: Player_Fire_Sword_Sprites_10
       rect:
         serializedVersion: 2
-        x: 256
+        x: 251
         y: 128
-        width: 64
+        width: 66
         height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -409,9 +409,9 @@ TextureImporter:
       name: Player_Fire_Sword_Sprites_11
       rect:
         serializedVersion: 2
-        x: 320
+        x: 317
         y: 128
-        width: 64
+        width: 67
         height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -642,7 +642,7 @@ TextureImporter:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
+        width: 69
         height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -661,9 +661,9 @@ TextureImporter:
       name: Player_Fire_Sword_Sprites_23
       rect:
         serializedVersion: 2
-        x: 320
+        x: 325
         y: 0
-        width: 64
+        width: 59
         height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
