@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float attackAnimationDuration = 0f;
     public GameObject fireballProjectile;
     public float fireballManaCost;
+    public float fireballYOffset;
     public float fireballCastAnimationDuration = 0f;
     public float fireSwordAnimationDuration = 0f;
     public float attackStaminaCost;
@@ -111,6 +112,7 @@ public class PlayerController : MonoBehaviour
         {
             if (currentStamina >= dashStaminaCost)
             {
+                SoundManagerScript.PlaySound("dash");
                 isDashButtonDown = true;
                 UseStamina(dashStaminaCost);
             }
@@ -131,6 +133,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentStamina >= attackStaminaCost)
         {
+            SoundManagerScript.PlaySound("comboAttack");
             deadlyStabComboCanHappen = false;
             UseStamina(attackStaminaCost);
             StartCoroutine(WaitForDeadlyStabAnimation());
@@ -165,13 +168,6 @@ public class PlayerController : MonoBehaviour
             movement.rb.MovePosition(positionAfterDash);
             StartCoroutine(WaitForDashAnimation());
             isDashButtonDown = false;
-        }
-
-        // If TakeDamage() exists and there's no other way for player to has his health decreased
-        // Maybe this Fixed update logic is not required anymore?
-        if (currentHealth <= 0)
-        {
-            Death();
         }
     }
 
@@ -210,6 +206,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time - lastImmune > immuneTime)
         {
+            SoundManagerScript.PlaySound("playerHurt");
             lastImmune = Time.time;
             currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
@@ -340,7 +337,11 @@ public class PlayerController : MonoBehaviour
     // Creates a fireball at the appropriate location near the player with a computed velocity and angle
     private void CreateFireball(Vector2 fireballVelocity)
     {
-        Fireball fireball = Instantiate(fireballProjectile, transform.position, Quaternion.identity)
+        // If the player is facing downwards we don't want to offset the fireball, because then it renders below the player model.
+        Vector3 fireballOffset;
+        fireballOffset = animator.GetFloat("FacingDirection") == 2f ? new Vector3(0, 0, 0) : new Vector3(0, fireballYOffset, 0);
+
+        Fireball fireball = Instantiate(fireballProjectile, transform.position + fireballOffset, Quaternion.identity)
             .GetComponent<Fireball>();
         fireball.Setup(fireballVelocity, ComputeFireballAngle(fireballVelocity));
     }
