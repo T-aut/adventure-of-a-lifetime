@@ -39,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
         else if (_movement.x < 0) animator.SetFloat("FacingDirection", 3);
     }
 
+    public void ResetVelocity()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     public void Push(Vector2 pushVector)
     {
         UpdatePosition(pushVector);

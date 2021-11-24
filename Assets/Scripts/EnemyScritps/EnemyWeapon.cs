@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour
 {    
     //hitbox
-    
     public Collider2D[] hits = new Collider2D[10];
     public BoxCollider2D hitbox;
     public ContactFilter2D filter;
     public int damagePoint;
     public float pushForce;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +46,6 @@ public class EnemyWeapon : MonoBehaviour
             };
 
             coll.SendMessage("TakeDamage", dmg);
-
         }
     }
 }
