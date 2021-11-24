@@ -13,7 +13,7 @@ public class EnemyLogic : MonoBehaviour
     public float maxHealth = 10;
     public float pushRecoverySpeed = 0.2f;
     public float currentHealth;
-
+    protected float deathTime = 0;
     public Animator myAnimator;
     public float attackAnimationDuration = 0.4f;
     public float attackCooldown;
@@ -23,7 +23,9 @@ public class EnemyLogic : MonoBehaviour
     public float attackRange;
     protected Rigidbody2D rb;
    protected Transform target;
-    // Push
+
+   protected bool isDead = false;
+   // Push
     protected Vector2 pushDirection;
     public virtual void FixedUpdate()
     {
@@ -41,8 +43,10 @@ public class EnemyLogic : MonoBehaviour
         {
             lastImmune = Time.time;
             currentHealth = Mathf.Clamp(currentHealth - dmg.damageAmount, 0, maxHealth);
-            Debug.Log(currentHealth);
+            
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+            
+            
             if (currentHealth == 0)
             {
                 Death();
@@ -52,7 +56,9 @@ public class EnemyLogic : MonoBehaviour
 
     protected void Death()
     {
-        Destroy(gameObject);
+        isDead = true;
+        StartCoroutine(WaitForDeathAnimation());
+        
     }
 
     public IEnumerator WaitForAttackAnimation()
@@ -62,5 +68,19 @@ public class EnemyLogic : MonoBehaviour
         yield return new WaitForSeconds(attackAnimationDuration);
 
         myAnimator.SetBool("Attacking", false);
+    }
+    public IEnumerator WaitForDeathAnimation()
+    {
+        myAnimator.SetTrigger("Dying");
+
+        yield return new WaitForSeconds(0.5f);
+
+        myAnimator.SetBool("Dead", true);
+
+        yield return new WaitForSecondsRealtime(3f);
+        Destroy(gameObject);
+
+
+
     }
 }
