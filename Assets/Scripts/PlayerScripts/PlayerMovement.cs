@@ -7,13 +7,15 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
-    private bool _isControlEnabled = true;
+    public bool _isControlEnabled = true;
     private Vector2 _movement = new Vector2();
 
+    private PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
         animator.SetFloat("FacingDirection", 2);
+        playerController = gameObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", _movement.y);
         animator.SetFloat("Horizontal", _movement.x);
 
+        if(animator.GetBool("IsMoving")){
+            SoundManagerScript.PlaySound("playerMove");
+        }
+
         if (_movement.y > 0) animator.SetFloat("FacingDirection", 0);
         else if (_movement.y < 0) animator.SetFloat("FacingDirection", 2);
 
@@ -33,11 +39,37 @@ public class PlayerMovement : MonoBehaviour
         else if (_movement.x < 0) animator.SetFloat("FacingDirection", 3);
     }
 
+    public void ResetVelocity()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
+    public void Push(Vector2 pushVector)
+    {
+        UpdatePosition(pushVector);
+    }
+
+    private void UpdatePosition(Vector2 positionVector)
+    {
+        positionVector.y = _isControlEnabled ? Input.GetAxisRaw("Vertical") : 0;
+        positionVector.x = _isControlEnabled ? Input.GetAxisRaw("Horizontal") : 0;
+
+        animator.SetBool("IsMoving", positionVector.sqrMagnitude > 0);
+        animator.SetFloat("Vertical", positionVector.y);
+        animator.SetFloat("Horizontal", positionVector.x);
+
+        if (positionVector.y > 0) animator.SetFloat("FacingDirection", 0);
+        else if (positionVector.y < 0) animator.SetFloat("FacingDirection", 2);
+
+        if (positionVector.x > 0) animator.SetFloat("FacingDirection", 1);
+        else if (positionVector.x < 0) animator.SetFloat("FacingDirection", 3);
+    }
+
     void FixedUpdate()
     {
         if (!_isControlEnabled) return;
-
-        rb.MovePosition(rb.position + _movement * speed * Time.fixedDeltaTime);
+        playerController.pushDirection = Vector2.Lerp(playerController.pushDirection, Vector2.zero, playerController.pushRecoverySpeed);
+        rb.MovePosition(rb.position + _movement * speed * Time.fixedDeltaTime + playerController.pushDirection);
     }
 
     public void SetControlEnabled(bool enabled)
@@ -87,4 +119,5 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool IsControlEnabled() => _isControlEnabled;
+
 }
