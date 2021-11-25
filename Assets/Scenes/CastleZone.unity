@@ -3453,7 +3453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 161.62793, y: -15.843978, z: -10}
+  m_LocalPosition: {x: 161.71095, y: -15.843978, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3827,10 +3827,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5336759421991900681, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: damagePoint
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: maxHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
         type: 3}
       propertyPath: attackRange
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: currentHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
         type: 3}
@@ -4710,10 +4730,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5336759421991900681, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: damagePoint
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: maxHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
         type: 3}
       propertyPath: attackRange
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: currentHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
         type: 3}
@@ -6785,8 +6825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18abdecb3ee1f8a46a04cd4a6dcfb6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.5
-  lastDelay: 0
 --- !u!82 &1032757425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7355,12 +7393,27 @@ PrefabInstance:
     - target: {fileID: 5336759421991900681, guid: b771fb89dc0540849a48eeca4a5d586b,
         type: 3}
       propertyPath: damagePoint
-      value: 4
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: maxHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
         type: 3}
       propertyPath: attackRange
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: currentHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5770602984283920614, guid: b771fb89dc0540849a48eeca4a5d586b,
         type: 3}

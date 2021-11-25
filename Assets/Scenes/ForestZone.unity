@@ -8686,7 +8686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &495864864
 Transform:
   m_ObjectHideFlags: 0
@@ -9207,7 +9207,7 @@ PrefabInstance:
     - target: {fileID: 8361568794270899304, guid: 40d7059c5d7fe3949857d356dde5d9ad,
         type: 3}
       propertyPath: currentHealth
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8361568794270899304, guid: 40d7059c5d7fe3949857d356dde5d9ad,
         type: 3}
@@ -9271,7 +9271,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damagePoint: 2
+  damagePoint: 6
   pushForce: 1
 --- !u!4 &524323755 stripped
 Transform:
@@ -16289,7 +16289,7 @@ PrefabInstance:
     - target: {fileID: 8361568794270899304, guid: 40d7059c5d7fe3949857d356dde5d9ad,
         type: 3}
       propertyPath: currentHealth
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8361568794270899304, guid: 40d7059c5d7fe3949857d356dde5d9ad,
         type: 3}
@@ -16353,7 +16353,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damagePoint: 2
+  damagePoint: 6
   pushForce: 1
 --- !u!1001 &847729874
 PrefabInstance:
@@ -21078,7 +21078,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damagePoint: 2
+  damagePoint: 6
   pushForce: 1
 --- !u!1001 &1101467306
 PrefabInstance:
@@ -28599,7 +28599,7 @@ PrefabInstance:
     - target: {fileID: 8361568794270899304, guid: 40d7059c5d7fe3949857d356dde5d9ad,
         type: 3}
       propertyPath: currentHealth
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8361568794270899304, guid: 40d7059c5d7fe3949857d356dde5d9ad,
         type: 3}
@@ -126179,12 +126179,12 @@ PrefabInstance:
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.195923
+      value: -23.928822
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.504236
+      value: -12.510392
       objectReference: {fileID: 0}
     - target: {fileID: 8685503919481533649, guid: 35700bc98072a0d43b5aade33bfdacc0,
         type: 3}
