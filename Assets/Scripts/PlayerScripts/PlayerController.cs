@@ -102,14 +102,17 @@ public class PlayerController : MonoBehaviour
         // Attack, spells and abilities.
         if (Input.GetButtonDown("Fire1") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting"))
         {
+            movement.ResetVelocity();
             Attack();
         }
         else if (Input.GetButtonDown("Spell1") && !animator.GetBool("IsAttacking"))
         {
+            movement.ResetVelocity();
             LaunchFireBall();
         }
         else if (Input.GetButtonDown("Dash") && !animator.GetBool("IsAttacking") && !animator.GetBool("IsCasting") && dashCanBeUsed)
         {
+            movement.ResetVelocity();
             if (currentStamina >= dashStaminaCost)
             {
                 SoundManagerScript.PlaySound("dash");
