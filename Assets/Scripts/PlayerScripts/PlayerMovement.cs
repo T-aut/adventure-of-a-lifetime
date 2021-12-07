@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public bool _isControlEnabled = true;
     private Vector2 _movement = new Vector2();
 
+    private bool _isAltarUnlocked = false;
     private PlayerController playerController;
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", _movement.y);
         animator.SetFloat("Horizontal", _movement.x);
 
-        if(animator.GetBool("IsMoving")){
+        if (animator.GetBool("IsMoving"))
+        {
             SoundManagerScript.PlaySound("playerMove");
         }
 
@@ -120,4 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsControlEnabled() => _isControlEnabled;
 
+    public void SetAltarUnlocked(bool value) => _isAltarUnlocked = value;
+
+    public bool IsAltarUnlocked => _isAltarUnlocked;
 }

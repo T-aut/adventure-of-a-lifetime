@@ -12,6 +12,7 @@ namespace Cainos.PixelArtTopDown_Basic
         public List<SpriteRenderer> runes;
         public LevelLoader _levelLoader;
         public float lerpSpeed;
+        public PlayerMovement PlayerMovement;
 
         private Color curColor;
         private Color targetColor;
@@ -45,7 +46,7 @@ namespace Cainos.PixelArtTopDown_Basic
             {
                 timeRemaining -= Time.deltaTime;
             }
-            else if(isStanding && timeRemaining <= 0)
+            else if (isStanding && timeRemaining <= 0 && PlayerMovement.IsAltarUnlocked)
             {
                 LoadLevelLoaderScene();
             }
